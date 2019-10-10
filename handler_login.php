@@ -18,7 +18,7 @@
     echo "<html><body>";
     //echo "<div>".$loginCheck."</div>";
     if ($loginCheck == 1){
-        echo "<div>Successfully Logged in!</div>";
+        echo "<div>Successfully Logged In!</div>";
     }else{
         echo "<div>Login Unsuccessful!</div>";
     }
