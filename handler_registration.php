@@ -1,9 +1,6 @@
 <?php
     session_start();
     include("usefulfunctions.php");
-    require_once('rabbit/path.inc');
-    require_once('rabbit/get_host_info.inc');
-    require_once('rabbit/rabbitMQLib.inc');
 
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
@@ -14,7 +11,13 @@
             alert(\"Passwords do not match.\");
             window.location.replace(\"index.html\");
         </script>";
+        exit(0);
     }
+
+    require_once('rabbit/path.inc');
+    require_once('rabbit/get_host_info.inc');
+    require_once('rabbit/rabbitMQLib.inc');
+
 
     $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
