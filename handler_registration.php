@@ -28,7 +28,7 @@
     $request['firstName']   = $_POST['firstName'];
     $request['lastName']    = $_POST['lastName'];
     $request['message']     = "registration";
-    $loginCheck = $client->send_request($request);
+    //$loginCheck = $client->send_request($request);
     $registrationCheck = $client->publish($request);
 
     echo "<html><body>";
