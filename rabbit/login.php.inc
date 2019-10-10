@@ -20,7 +20,7 @@ public function validateLogin($username,$password)
 {
 	$un = $this->logindb->real_escape_string($username);
 	$pw = $this->logindb->real_escape_string($password);
-	$statement = "select * from login where username = '$un'";
+	$statement = "select * from login where email = '$un'";
 	$response = $this->logindb->query($statement);
 
 	while ($row = $response->fetch_assoc())
@@ -35,5 +35,15 @@ public function validateLogin($username,$password)
 	}
 	return 0;//no users matched username
 }
+
+public function register($username, $password, $firstName, $lastName){
+    $un = $this->logindb->real_escape_string($username);
+	$pw = $this->logindb->real_escape_string($password);
+	$fn = $this->logindb->real_escape_string($firstName);
+	$ln = $this->logindb->real_escape_string($lastName);
+    $statement = "INSERT INTO login VALUES ('$un', '$pw', '$fn', '$ln')";
+	$response = $this->logindb->query($statement);
+}
+
 }
 ?>
