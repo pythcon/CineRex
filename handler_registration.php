@@ -5,12 +5,23 @@
     require_once('rabbit/get_host_info.inc');
     require_once('rabbit/rabbitMQLib.inc');
 
+    $password = $_POST['password'];
+    $password2 = $_POST['password2'];
+
+    if ($password != $password2){
+        echo"
+        <script>
+            alert(\"Passwords do not match.\");
+            window.location.replace(\"index.html\");
+        </script>";
+    }
+
     $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
     $request = array();
     $request['type']        = "registration";
     $request['email']       = $_POST['email'];
-    $request['password']    = $_POST['password'];
+    $request['password']    = $password;
     $request['firstName']   = $_POST['firstName'];
     $request['lastName']    = $_POST['lastName'];
     $request['message']     = "registration";
