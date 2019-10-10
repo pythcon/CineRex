@@ -21,6 +21,7 @@
     //echo "<div>".$loginCheck."</div>";
     if ($registrationCheck == 1){
         echo "<div>Successfully Created Account!</div>";
+        $_SESSION['logged'] = true;
     }else{
         echo "<div>Account Creation Failed!</div>";
     }
