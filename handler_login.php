@@ -1,9 +1,9 @@
 <?php
     session_start();
     include("usefulfunctions.php");
-    require_once('path.inc');
-    require_once('get_host_info.inc');
-    require_once('rabbitMQLib.inc');
+    require_once('rabbit/path.inc');
+    require_once('rabbit/get_host_info.inc');
+    require_once('rabbit/rabbitMQLib.inc');
 
     $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
@@ -18,7 +18,7 @@
     echo "<html><body>";
     //echo "<div>".$loginCheck."</div>";
     if ($loginCheck == 1){
-        echo "<div>Successfully Logged in!</div>";
+        echo "<div>Successfully Logged In!</div>";
     }else{
         echo "<div>Login Unsuccessful!</div>";
     }
