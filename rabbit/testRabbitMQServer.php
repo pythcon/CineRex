@@ -26,6 +26,8 @@ function requestProcessor($request)
   {
     case "login":
       return doLogin($request['email'],$request['password']);
+    case "registration":
+      return doLogin($request['email'],$request['password'],$request['firstName'],$request['lastName']);
     case "validate_session":
       return doValidate($request['sessionId']);
   }

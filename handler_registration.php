@@ -8,12 +8,12 @@
     $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
     $request = array();
-    $request['type']        = "login";
+    $request['type']        = "registration";
     $request['email']       = $_POST['email'];
     $request['password']    = $_POST['password'];
     $request['firstName']   = $_POST['firstName'];
     $request['lastName']    = $_POST['lastName'];
-    $request['message']     = "login";
+    $request['message']     = "registration";
     $loginCheck = $client->send_request($request);
     $registrationCheck = $client->publish($request);
 

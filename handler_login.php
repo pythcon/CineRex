@@ -13,7 +13,7 @@
     $request['password'] = $_POST['password'];
     $request['message'] = "login";
     $loginCheck = $client->send_request($request);
-    $loginCheck2 = $client->publish($request);
+    $registrationCheck = $client->publish($request);
 
     echo "<html><body>";
     //echo "<div>".$loginCheck."</div>";
