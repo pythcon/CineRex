@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include("usefulfunctions.php");
     require_once('path.inc');
     require_once('get_host_info.inc');
@@ -9,8 +8,8 @@
 
     $request = array();
     $request['type'] = "login";
-    $request['username'] = $_POST['user'];
-    $request['password'] = $_POST['pass'];
+    $request['email'] = $_POST['email'];
+    $request['password'] = $_POST['password'];
     $request['message'] = "login";
     $loginCheck = $client->send_request($request);
     $loginCheck2 = $client->publish($request);
