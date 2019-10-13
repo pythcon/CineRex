@@ -9,77 +9,138 @@
     loginCheck(); 
 ?>
 <!------------------------------------------------------------------->
-<!------------------------------AUTHENTICATION----------------------->
-        <?php
-            session_start();
-            error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-            ini_set('display_errors' , 1);
-            require_once('rabbit/path.inc');
-            require_once('rabbit/get_host_info.inc');
-            require_once('rabbit/rabbitMQLib.inc');
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
 
-            $pass = $_POST['password1'];
-            $pass2 = $_POST['password2'];
-            
-            if ($pass != $pass2){
-                echo "
-                <script>
-                    alert(\"Password don't match. Please re-enter a new password.\");
-                    window.location.replace(\"changepassword.php\");
-                </script>
-                ";
-                die();
-            }
-            if (strlen($pass) < 6){
-                echo "
-                <script>
-                    alert(\"Password must be at least 6 characters. Please re-enter a new password.\");
-                    window.location.replace(\"changepassword.php\");
-                </script>
-                ";
-                die();
-            }
-            $bad = false;
-            if (!isset ($pass) || !isset ($pass2)){
-                $bad = true;
-            }
-            if ($pass == "" || $pass2 == ""){
-                $bad = true;
-            }
-            if ($bad){
-                echo "
-                <script>
-                    alert(\"Password not valid.\");
-                    window.location.replace(\"changepassword.php\");
-                </script>
-                ";
-                die();
-            }
-            //Successfully passed all tests:
-            $email = $_SESSION['email'];
-            $pass = md5($pass);
-            
-            //send to database
-            $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
-            $request = array();
-            $request['type']        = "changepassword";
-            $request['email']       = $_POST['email'];
-            $request['password']    = $pass;
-            $request['message']     = "changepassword";
-            //$loginCheck = $client->send_request($request);
-            $successfulCheck = $client->publish($request);
-            
-            if ($successfulCheck != 1){
-                die("Somethng went wrong.");
-            }
-            
-            echo"
-            <script>
-                alert(\"Password Changed. Please log in. \");
-                window.location.replace(\"index.html\");
-            </script>";
-            $_SESSION['logged'] = false;
-            session_destroy();
-        ?>
-<!------------------------------------------------------------------->
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+<ul>
+ <li><a href="index.html">Home</a></li>
+	
+  <li><a href="changepassword.php">Change Password</a></li>
+  <li><a href="handler_logout.php">Logout</a></li>
+
+</ul>
+
+<h2>User Password Change</h2>
+
+<form action="handler_changepassword.php" method="post">
+  <div class="imgcontainer">
+    <img src="popcorn.jpg" alt="Avatar" class="avatar" style ="width:200px;height:200px;">
+  </div>
+
+  <div class="container">
+
+    <label for="password"><b>Enter a new Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+	
+    <label for="password2"><b>Re-Enter Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password2" required>
+        
+    <button type="submit">Change Password</button>
+  
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+  </div>
+</form>
+
+</body>
+</html>
