@@ -45,5 +45,12 @@ public function register($username, $password, $firstName, $lastName){
 	$response = $this->logindb->query($statement);
 }
 
+public function changePassword($username, $password){
+    $un = $this->logindb->real_escape_string($username);
+	$pw = $this->logindb->real_escape_string($password);
+    $statement = "UPDATE login SET password='$password' WHERE email='$username'";
+	$response = $this->logindb->query($statement);
+}
+
 }
 ?>

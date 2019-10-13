@@ -21,6 +21,13 @@ function doRegister($username, $password, $firstName, $lastName){
     //returns false if registration fails
 }
 
+//Password Change
+function doChangePassword($username, $password){
+    $login = new loginDB();
+    return $login->changePassword($username, $password);
+    //returns false if registration fails
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -35,6 +42,8 @@ function requestProcessor($request)
       return doLogin($request['email'],$request['password']);
     case "registration":
       return doRegister($request['email'],$request['password'],$request['firstName'],$request['lastName']);
+    case "changepassword":
+      return doChangePassword($request['email'],$request['password']);
     case "validate_session":
       return doValidate($request['sessionId']);
   }
