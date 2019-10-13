@@ -23,6 +23,13 @@ ul {
 li {
   float: left;
 }
+search-container {
+display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  }
 
 li a {
   display: block;
@@ -142,7 +149,12 @@ img {vertical-align: middle;}
 	
   <li><a href="login.html">Log In</a></li>
   <li><a href="create.html"> Create Account</a></li>
-
+ 
+    <form action="/action_page.php">
+      <li><input type="text" placeholder="Search.." name="search"></li>
+      <li><button type="submit">Submit</button></li>
+    </form>
+	
 </ul>
 
 
@@ -184,32 +196,27 @@ Latest Movies!
 </div>
 
 <script>
-var slideIndex = 1;
-showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+var slideIndex = 0;
+showSlides();
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
+function showSlides() {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
+    slides[i].style.display = "none";  
   }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
   for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
+    dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 4000); // Change image every 4 seconds
 }
+
 </script>
 
 </body>
