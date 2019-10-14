@@ -10,4 +10,12 @@
             exit();
         }
     }
+
+    function redirect($message, $targetfile, $delay){
+        echo $message;
+        
+        header("refresh: $delay, url = $targetfile");
+        
+        exit();
+    }
 ?>
