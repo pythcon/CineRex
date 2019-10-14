@@ -1,5 +1,10 @@
 <?php
     function loginCheck(){
+        require_once('rabbit/path.inc');
+        require_once('rabbit/get_host_info.inc');
+        require_once('rabbit/rabbitMQLib.inc');
+
+        $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
         //check if authenticated
         $request = array();
         $request['type']        = "validate_session";
