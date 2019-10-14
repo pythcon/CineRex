@@ -81,7 +81,7 @@ img.avatar {
 .container {
   padding: 16px;
 }
-#message {
+message {
   display:none;
   background: #f1f1f1;
   color: #000;
@@ -89,7 +89,7 @@ img.avatar {
   padding: 20px;
   margin-top: 10px;
 }
-#message p {
+message p {
   padding: 10px 35px;
   font-size: 18px;
 }
@@ -100,7 +100,7 @@ img.avatar {
 .invalid:before {
   position: relative;
   left: -35px;
-  content: "&#10006;";
+  content: "✖";
 }
 
 .valid {
@@ -110,7 +110,7 @@ img.avatar {
 .valid:before {
   position: relative;
   left: -35px;
-  content: "&#10004;";
+  content: "✔";
 }
 
 span.psw {
@@ -163,7 +163,7 @@ span.psw {
     <input type="text" placeholder="Enter Email" name="email" required><br>
 
     <label for="password"><b>Enter a Password</b></label><br>
-    <input type="password" placeholder="Enter Password" name="password" required 
+    <input type="password" placeholder="Enter Password" name="password" id="password" required 
 	pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
 	title="Must contain at least one number and one uppercase and lowercase letter, 
 	and at least 8 or more characters" ><br>
@@ -175,12 +175,6 @@ span.psw {
     <button type="submit">Create Account</button>
   
   </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-  </div>
-</form>
-
 <div id="message">
   <h3>Password must contain the following:</h3>
   <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -188,9 +182,15 @@ span.psw {
   <p id="number" class="invalid">A <b>number</b></p>
   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 </div>
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+  </div>
+</form>
+
+
 				
 <script>
-var myInput = document.getElementById("psw");
+var myInput = document.getElementById("password");
 var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
 var number = document.getElementById("number");
