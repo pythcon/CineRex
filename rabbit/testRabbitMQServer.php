@@ -28,6 +28,12 @@ function doChangePassword($username, $password){
     //returns false if registration fails
 }
 
+//Validate Session
+function doValidateSession($sessionLogged){
+    return $sessionLogged;
+    //returns false if registration fails
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;

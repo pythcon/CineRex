@@ -8,7 +8,7 @@
         //check if authenticated
         $request = array();
         $request['type']        = "validate_session";
-        $request['sessionId']    = session_id();
+        $request['sessionId']    = $_SESSION['logged'];
         $request['message']     = "validate_session";
         //$loginCheck = $client->send_request($request);
         $sessionCheck = $client->publish($request);
