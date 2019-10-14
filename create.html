@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-
+/* CSS styling for the NAV Bar */ 
 ul {
   list-style-type: none;
   margin: 0;
@@ -11,11 +11,11 @@ ul {
   overflow: hidden;
   background-color: #333;
 }
-
+/* CSS styling for the Nav Bar buttons */
 li {
   float: left;
 }
-
+/* more styling for the buttons*/
 li a {
   display: block;
   color: white;
@@ -27,16 +27,15 @@ li a {
 li a:hover {
   background-color: #111;
 }
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}
+
 
 
 
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
 
+
+/* Text field CSS styling */
 input[type=text], input[type=password] {
   width: 50%;
   padding: 12px 20px;
@@ -46,6 +45,7 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
+/* CSS Styling for create account button */
 button {
   background-color: #4CAF50;
   color: white;
@@ -60,12 +60,14 @@ button:hover {
   opacity: 0.8;
 }
 
+/* Cancel button CSS Styling*/
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
 }
 
+/* CSS styling for images*/
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
@@ -78,6 +80,37 @@ img.avatar {
 
 .container {
   padding: 16px;
+}
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10006;";
+}
+
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10004;";
 }
 
 span.psw {
@@ -130,7 +163,11 @@ span.psw {
     <input type="text" placeholder="Enter Email" name="email" required><br>
 
     <label for="password"><b>Enter a Password</b></label><br>
-    <input type="password" placeholder="Enter Password" name="password" required><br>
+    <input type="password" placeholder="Enter Password" name="password" required 
+	pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+	title="Must contain at least one number and one uppercase and lowercase letter, 
+	and at least 8 or more characters" ><br>
+	
 	
     <label for="password2"><b>Re-Enter Password</b></label><br>
     <input type="password" placeholder="Enter Password" name="password2" required><br>
@@ -143,6 +180,76 @@ span.psw {
     <button type="button" class="cancelbtn">Cancel</button>
   </div>
 </form>
+
+<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+				
+<script>
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+
+
 
 </body>
 </html>
