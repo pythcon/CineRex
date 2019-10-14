@@ -31,17 +31,11 @@
     //$loginCheck = $client->send_request($request);
     $registrationCheck = $client->publish($request);
 
-    echo "<html><body>";
-    //echo "<div>".$loginCheck."</div>";
     if ($registrationCheck == 1){
-        echo "<div>Successfully Created Account!</div>";
-        $_SESSION['logged'] = true;
+        redirect("Successfully Created Account! Please Log in. Redirecting now...", "index.html", 3);
     }else{
-        echo "<div>Account Creation Failed!</div>";
+        redirect("Account Creation Failed. Please try again. Redirecting...", "index.html", 3);
     }
-
-    echo "</body></html>";
-    exit(0);
 
 ?>
     

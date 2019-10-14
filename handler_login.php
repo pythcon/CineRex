@@ -15,15 +15,11 @@
     $loginCheck = $client->send_request($request);
     //$registrationCheck = $client->publish($request);
 
-    echo "<html><body>";
     //echo "<div>".$loginCheck."</div>";
     if ($loginCheck == 1){
-        echo "<div>Successfully Logged In!</div>";
+        redirect("Successfully Logged in! Redirecting now...", "dashboard.php", 3);
+        $_SESSION['logged'] = true;
     }else{
-        echo "<div>Login Unsuccessful!</div>";
+        redirect("Login Failed. Please try again. Redirecting...", "index.html", 3);
     }
-
-    echo "</body></html>";
-    exit(0);
-
 ?>
