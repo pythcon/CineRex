@@ -24,6 +24,4 @@
     }
 
     echo "</body></html>";
-    exit(0);
-
 ?>
