@@ -6,8 +6,6 @@
     //check to see if user is logged in
     loginCheck();
 
-    
-
 ?>
 <html>
 <meta charset = "UTF-8">

@@ -1,13 +1,15 @@
 <?php
     function loginCheck(){
         //check if authenticated
-        if (!$_SESSION['logged']){
-            echo"
-            <script>
-                alert(\"Not logged in...\");
-                window.location.replace(\"/index.html\");
-            </script>";
-            exit();
+        $request = array();
+        $request['type']        = "validate_session";
+        $request['sessionId']    = session_id();
+        $request['message']     = "validate_session";
+        //$loginCheck = $client->send_request($request);
+        $sessionCheck = $client->publish($request);
+        if ($sessionCheck != 1){
+            redirect("<span style=\"color:red;\">Not Logged In...Redirecting...</span>", "index.html", $delay);
+            exit(0);
         }
     }
 
