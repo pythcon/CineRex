@@ -29,7 +29,7 @@ function doChangePassword($username, $password){
 }
 
 //Validate Session
-function doValidateSession($sessionLogged){
+function doValidate($sessionLogged){
     return $sessionLogged;
     //returns false if registration fails
 }
