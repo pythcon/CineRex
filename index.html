@@ -11,6 +11,14 @@
   width: 50%;
 }
 
+input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
 
 ul {
   list-style-type: none;
@@ -23,12 +31,16 @@ ul {
 li {
   float: left;
 }
-search-container {
-display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+
+button {
+float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
   }
 
 li a {
@@ -151,9 +163,11 @@ img {vertical-align: middle;}
   <li><a href="create.html"> Create Account</a></li>
  
     <form action="/action_page.php">
-      <li><input type="text" placeholder="Search.." name="search"></li>
-      <li><button type="submit">Submit</button></li>
-    </form>
+      <input type="text" placeholder="Search.." name="search"></li>
+      
+	  <button type="submit">Submit</button>
+		
+	</form>
 	
 </ul>
 
