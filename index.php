@@ -20,6 +20,7 @@ input[type=text] {
   margin-top: 8px;
   margin-right: 16px;
   font-size: 17px;
+  align: right;
 }
 
 ul {
@@ -185,6 +186,7 @@ if (!$_SESSION['logged']){
 
       <li><a href='changepassword.html'>Change Password</a></li>
       <li><a href='handler_logout.php'>Logout</a></li>
+	  <li><a href='dashboard.php'>User Dashboard</a></li>
 
         <form action='/action_page.php'>
           <li><input type='text' placeholder='Search..' name='search'></li>
