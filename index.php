@@ -295,7 +295,8 @@ function showSlides() {
                 r = JSON.parse(result);
                 res = "<br> Movie Name: "+r.Title+"<br><br> Year: "+r.Year+"<br> <br> Rated: "+r.Rated+"<br><br> Genre: "+r.Genre+"<br>";
 
-                $("#B").html(res);
+                poster = "<img src='"+r.Poster+"'>"
+                $("#B").html(res + poster);
             }
         });
      };    
