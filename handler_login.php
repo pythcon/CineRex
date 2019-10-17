@@ -18,8 +18,8 @@
     //echo "<div>".$loginCheck."</div>";
     if ($loginCheck == 1){
         $_SESSION['logged'] = true;
-        redirect("Successfully Logged in! Redirecting now...", "dashboard.php", 3);
+        redirect("<span style=\"color:green;\">Successfully Logged in! Redirecting now...</span>", "dashboard.php", 3);
     }else{
-        redirect("Login Failed. Please try again. Redirecting...", "index.html", 3);
+        redirect("<span style=\"color:red;\">Login Failed. Please try again. Redirecting...</span>", "index.html", 3);
     }
 ?>
