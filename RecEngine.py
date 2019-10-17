@@ -12,12 +12,12 @@ def get_index_from_title(title):
 
 #Open and read movie database
 
-df = pd.read_csv("movie_dataset.csv")
+df = pd.read_csv("movie_metadata.csv")
 
 #Choose attributes of each movie that will be used to make a recommendation
 #We will use keywords, cast, genres, and director
 
-attributes = ['keywords', 'cast', 'genres', 'director'] 
+attributes = ['plot_keywords', 'actor_1_name', 'actor_2_name', 'director_name', 'genres', 'title_year'] 
 
 #Combine all attributes into one column in the dataframe
 
@@ -26,7 +26,7 @@ for attribute in attributes:
 	
 def combine(row):
 	try:
-		return row['keywords'] +" "+row['cast']+" "+row["genres"]+" "+row["director"]
+		return row['plot_keywords'] +" "+row['actor_1_name']+" "+row["actor_2_name"]+" "+row["director_name"]+" "+row["genres"]+" "+row["title_year"]
 		
 	except:
 		print ("Error:", row)
@@ -40,7 +40,9 @@ count_matrix = cv.fit_transform(df["combined"])
 #Calculate cosine similarity with count_matrix
 cos_sim = cosine_similarity(count_matrix) 
 
-movie_user_likes = "Fight Club"
+m = raw_input("Fight Club")
+
+movie_user_likes = m
 
 #Get index of this movie from its title
 
