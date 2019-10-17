@@ -1,7 +1,7 @@
 <?php
 sleep (2.5);
-$zip=$_GET["zip"];
-$url = "http://www.omdbapi.com/?i=tt3896198&apikey=92e1a0bb&t=$zip"; 
+$movieTitle=$_GET["movieTitle"];
+$url = "http://www.omdbapi.com/?i=tt3896198&apikey=92e1a0bb&t=$movieTitle"; 
 
 $fp = fopen ( $url , "r" ); 
 $contents = "";

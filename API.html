@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <style type="text/css">
@@ -59,49 +58,48 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         
- <script type = "text/javascript"> 
- $(document).ready( function(){
- 
-   $("button").click(function(){ 
-   
-     var zip = $("#zip").val();
-     
-     if(zip != ''){
-         
-         $.ajax({
-             type:         "GET",
-             url:         "API.php",
-             data:         "zip="+zip,
-             
-             
-             beforeSend: function(){         
-                              $("#B").html("Please Wait.....<div class=\"spinner\"></div>");                },
-         
-             error:         function(xhr, status, error) {  
-                              alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   },
-             
-             success:     function(result){
-                  
-                r = JSON.parse(result);
-        res = "<br> Movie Name: "+r.Title+"<br><br> Year: "+r.Year+"<br> <br> Rated: "+r.Rated+"<br><br> Genre: "+r.Genre+"<br>";
+         <script type = "text/javascript"> 
+             $(document).ready( function(){
 
-                
-                $("#B").html(res);
-                
-            }    //success  - the } closes the definition or body of the function(result){ ...
-        });        //ajax  - the }) closes the  $.ajax({ ... the } closes the JSOn argument, and ) matches opening ( 
-     };            //the }  closes the if(zip != '')  {  ....
-  });            //anonymous fn handler for button click: } closes the body of code...the ) closes the click (   )
-});                //the  })  closes the ready event anonymous handler:  ready( function(){ ....
-     
-</script>
-</head>
+               $("button").click(function(){ 
+
+                 var movieTitle = $("#movieTitle").val();
+
+                 if(movieTitle != ''){
+
+                     $.ajax({
+                         type:         "GET",
+                         url:         "API.php",
+                         data:         "movieTitle="+movieTitle,
+
+
+                         beforeSend: function(){         
+                                          $("#B").html("Please Wait.....<div class=\"spinner\"></div>");                },
+
+                         error:         function(xhr, status, error) {  
+                                          alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   },
+
+                         success:     function(result){
+
+                            r = JSON.parse(result);
+                    res = "<br> Movie Name: "+r.Title+"<br><br> Year: "+r.Year+"<br> <br> Rated: "+r.Rated+"<br><br> Genre: "+r.Genre+"<br>";
+
+
+                            $("#B").html(res);
+
+                        }
+                    });
+                 };    
+              });   
+            });                
+
+        </script>
+    </head>
 <body>
-<div class="topnav">
-<input     id = "zip"  name = "zip" placeholder="Enter Movie name" autocomplete="off" min="0" required>
-<button id = "btn" type = "BUTTON"><b><font color= " #008000">Search Movie</font></b></button>
+    <div class="topnav">
+        <input     id = "movieTitle"  name = "movieTitle" placeholder="Enter Movie name" autocomplete="off" min="0" required>
+        <button id = "btn" type = "BUTTON"><b><font color= " #008000">Search Movie</font></b></button>
     </div>
-<div id= "B"></div>
-</center>
+    <div id= "B"></div>
 </body>
 </html>
