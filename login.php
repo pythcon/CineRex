@@ -104,12 +104,6 @@ if (!$_SESSION['logged']){
       <li><a href='login.html'>Log In</a></li>
       <li><a href='create.html'> Create Account</a></li>
 
-        <form action='/action_page.php'>
-          <li><input type='text' placeholder='Search..' name='search'></li>
-
-          <button type='submit'>Submit</button>
-
-        </form>
 
     </ul>
     ";
