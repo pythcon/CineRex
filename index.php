@@ -203,7 +203,7 @@ if (!$_SESSION['logged']){
 ?>
 <img src="popcorn.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
 
-Latest Movies!
+<h1>Latest Movies!</h1>
 
  <!-- Slideshow container -->
 <div class="slideshow-container">
