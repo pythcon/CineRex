@@ -13,20 +13,13 @@
     $request['password'] = $_POST['password'];
     $request['message'] = "login";
     $loginCheck = $client->send_request($request);
-    $loginCheck2 = $client->publish($request);
+    //$registrationCheck = $client->publish($request);
 
-    echo "<html><body>";
     //echo "<div>".$loginCheck."</div>";
     if ($loginCheck == 1){
-        echo "<div>Successfully Logged in!</div>";
+        $_SESSION['logged'] = true;
+        redirect("<span style=\"color:green;\">Successfully Logged in! Redirecting now...</span>", "dashboard.php", 3);
     }else{
-        echo "<div>Login Unsuccessful!</div>";
+        redirect("<span style=\"color:red;\">Login Failed. Please try again. Redirecting...</span>", "index.html", 3);
     }
-
-    echo "</body></html>";
-    exit(0);
-
 ?>
-    
-
-    
