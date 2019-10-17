@@ -72,21 +72,19 @@
                          url:         "API.php",
                          data:         "movieTitle="+movieTitle,
 
-
                          beforeSend: function(){         
-                                          $("#B").html("Please Wait.....<div class=\"spinner\"></div>");                },
+                            $("#B").html("Grabbing Movie Data....");
+                         },
 
-                         error:         function(xhr, status, error) {  
-                                          alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   },
+                         error: function(xhr, status, error) {  
+                            alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   
+                         },
 
-                         success:     function(result){
-
+                         success: function(result){
                             r = JSON.parse(result);
-                    res = "<br> Movie Name: "+r.Title+"<br><br> Year: "+r.Year+"<br> <br> Rated: "+r.Rated+"<br><br> Genre: "+r.Genre+"<br>";
-
+                            res = "<br> Movie Name: "+r.Title+"<br><br> Year: "+r.Year+"<br> <br> Rated: "+r.Rated+"<br><br> Genre: "+r.Genre+"<br>";
 
                             $("#B").html(res);
-
                         }
                     });
                  };    
