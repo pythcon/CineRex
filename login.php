@@ -148,13 +148,13 @@ if (!$_SESSION['logged']){
 
     <label for="psw"><b>Password</b></label><br>
     <input type="password"  placeholder="Enter Password" name="password" required >
-        
+  </div>
 
 
 
   <div class="container" style="background-color:#f1f1f1">
 	 <button type="submit" class ="loginbtn">Login</button>
-    <button  type="button" style="background-color:#FF0000"  > <a href = "index.html">Cancel</button></a>
+      <button  type="button" style="background-color:#FF0000"> <a href = "index.html">Cancel</a></button>
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
