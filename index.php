@@ -6,6 +6,13 @@
 <head>
 <style>
 
+h1 { 
+	color: green;
+	text-align:center;
+	text-decoration: underline;
+}
+
+
 .center {
   display: block;
   margin-left: auto;
