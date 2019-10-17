@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the "active" element to highlight the current page */
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+</style>
+    <head>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        
+ <script type = "text/javascript"> 
+ $(document).ready( function(){
+ 
+   $("button").click(function(){ 
+   
+     var zip = $("#zip").val();
+     
+     if(zip != ''){
+         
+         $.ajax({
+             type:         "GET",
+             url:         "API.php",
+             data:         "zip="+zip,
+             
+             
+             beforeSend: function(){         
+                              $("#B").html("Please Wait.....<div class=\"spinner\"></div>");                },
+         
+             error:         function(xhr, status, error) {  
+                              alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   },
+             
+             success:     function(result){
+                  
+                r = JSON.parse(result);
+        res = "<br> Movie Name: "+r.Title+"<br><br> Year: "+r.Year+"<br> <br> Rated: "+r.Rated+"<br><br> Genre: "+r.Genre+"<br>";
+
+                
+                $("#B").html(res);
+                
+            }    //success  - the } closes the definition or body of the function(result){ ...
+        });        //ajax  - the }) closes the  $.ajax({ ... the } closes the JSOn argument, and ) matches opening ( 
+     };            //the }  closes the if(zip != '')  {  ....
+  });            //anonymous fn handler for button click: } closes the body of code...the ) closes the click (   )
+});                //the  })  closes the ready event anonymous handler:  ready( function(){ ....
+     
+</script>
+</head>
+<body>
+<div class="topnav">
+<input     id = "zip"  name = "zip" placeholder="Enter Movie name" autocomplete="off" min="0" required>
+<button id = "btn" type = "BUTTON"><b><font color= " #008000">Search Movie</font></b></button>
+    </div>
+<div id= "B"></div>
+</center>
+</body>
+</html>
