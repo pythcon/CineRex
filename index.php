@@ -182,7 +182,7 @@ if (!$_SESSION['logged']){
      <li><a href='index.html'>Home</a></li>
 
       <li><a href='changepassword.html'>Change Password</a></li>
-      <li><a href='logout.php'>Logout</a></li>
+      <li><a href='handler_logout.php'>Logout</a></li>
 
         <form action='/action_page.php'>
           <li><input type='text' placeholder='Search..' name='search'></li>
