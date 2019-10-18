@@ -20,6 +20,20 @@ h1 {
   width: 50%;
 }
 
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+
 input[type=text] {
   float: right;
   padding: 6px;
@@ -35,7 +49,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #FF0000;
 }
 
 li {
@@ -177,8 +191,6 @@ if (!$_SESSION['logged']){
       <li><a href='login.html'>Log In</a></li>
       <li><a href='create.html'> Create Account</a></li>
 
-        <input id = 'movieTitle'  name = 'movieTitle' placeholder='Enter Movie name' autocomplete='off' min='0' required>
-        <button id = 'btn' type = 'BUTTON'><b><font color= ' #008000'>Search Movie</font></b></button>
 
     </ul>
     ";
@@ -191,8 +203,7 @@ if (!$_SESSION['logged']){
       <li><a href='handler_logout.php'>Logout</a></li>
 	  <li><a href='dashboard.php'>User Dashboard</a></li>
 
-      <input id = 'movieTitle'  name = 'movieTitle' placeholder='Enter Movie name' autocomplete='off' min='0' required>
-        <button id = 'btn' type = 'BUTTON'><b><font color= ' #008000'>Search Movie</font></b></button>
+     
 
 
     </ul>
@@ -201,6 +212,10 @@ if (!$_SESSION['logged']){
 
 
 ?>
+
+<div style="width:100%;">
+<div style="float:left; width:50%;">
+
 <img src="popcorn.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
 
 <h1>Latest Movies!</h1>
@@ -236,13 +251,18 @@ if (!$_SESSION['logged']){
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
 </div>
-
-<div>
-    Movie Information:
-    <br>
 </div>
-<div id= "B"></div>
 
+<div style= "float:right; width:50%">
+ <h1>  Movie Information:</h1>
+  <input id = 'movieTitle' name = 'movieTitle' placeholder='Enter Movie name' autocomplete='off' min='0' required>
+  <button id = 'btn' type = 'BUTTON'><b><font color= ' #008000'>Search Movie</font></b></button>
+  
+   <br>
+
+<div id= "B"></div>
+</div>
+</div>
 <script>
 
 var slideIndex = 0;
@@ -266,7 +286,7 @@ function showSlides() {
 }
 
 </script>
-    
+    <div class= "split right">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         
 <script type = "text/javascript"> 
@@ -306,5 +326,5 @@ function showSlides() {
 </script>
 
 </body>
-
+</div>
 </html>
