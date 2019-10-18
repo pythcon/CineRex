@@ -26,6 +26,7 @@ h1 {
 	text-decoration: underline;
 }
 
+
 h2{
 	color: black;
 	text-align:center;
