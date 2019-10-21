@@ -287,44 +287,48 @@ function showSlides() {
 
 </script>
     <div class= "split right">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         
-<script type = "text/javascript"> 
- $(document).ready( function(){
+        <script type = "text/javascript"> 
+         $(document).ready( function(){
 
-   $("button").click(function(){ 
+           $("button").click(function(){ 
 
-     var movieTitle = $("#movieTitle").val();
+             var movieTitle = $("#movieTitle").val();
 
-     if(movieTitle != ''){
+             if(movieTitle != ''){
 
-         $.ajax({
-             type:         "GET",
-             url:         "API.php",
-             data:         "movieTitle="+movieTitle,
+                 $.ajax({
+                     type:         "GET",
+                     url:         "API.php",
+                     data:         "movieTitle="+movieTitle,
 
-             beforeSend: function(){         
-                $("#B").html("Grabbing Movie Data....");
-             },
+                     beforeSend: function(){         
+                        $("#B").html("Grabbing Movie Data....");
+                     },
 
-             error: function(xhr, status, error) {  
-                alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   
-             },
+                     error: function(xhr, status, error) {  
+                        alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   
+                     },
 
-             success: function(result){
-                r = JSON.parse(result);
-                res = "<br> Movie Name: "+r.Title+"<br><br> Year: "+r.Year+"<br> <br> Rated: "+r.Rated+"<br><br> Genre: "+r.Genre+"<br>";
+                     success: function(result){
+                        r = JSON.parse(result);
+                        res = "<br> Movie Name: "+r.Title+"<br><br> Year: "+r.Year+"<br> <br> Rated: "+r.Rated+"<br><br> Genre: "+r.Genre+"<br>";
+                         
+                        //get imdbID to store in like/dislike database
+                        var imdbID = r.IMDBID;
+                        document.cookie = imdbID;
 
-                poster = "<img src='"+r.Poster+"'>"
-                $("#B").html(res + poster);
-            }
-        });
-     };    
-  });   
-});                
+                        poster = "<img src='"+r.Poster+"'>"
+                        $("#B").html(res + poster);
+                    }
+                });
+             };    
+          });   
+        });                
 
-</script>
+        </script>
 
+    </div>
 </body>
-</div>
 </html>
