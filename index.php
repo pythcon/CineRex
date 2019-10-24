@@ -203,11 +203,10 @@ if (!$_SESSION['logged']){
     echo "
     <ul>
      <li><a href='index.html'>Home</a></li>
-
+ <li><a href='dashboard.php'>Dashboard</a></li>
       <li><a href='changepassword.html'>Change Password</a></li>
       <li><a href='handler_logout.php'>Logout</a></li>
-	  <li><a href='dashboard.php'>User Dashboard</a></li>
-
+	
      
 
 
