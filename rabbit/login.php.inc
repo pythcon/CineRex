@@ -54,5 +54,19 @@ public function changePassword($username, $password){
 	$response = $this->logindb->query($statement);
 }
 
+public function likeMovie($username, $title){
+    $un = $this->logindb->real_escape_string($username);
+	$title = $this->logindb->real_escape_string($title);
+    $statement = "INSERT INTO userld (liked) VALUES '$title' WHERE email='$un'";
+	$response = $this->logindb->query($statement);
+}
+
+public function dislikeMovie($username, $title){
+    $un = $this->logindb->real_escape_string($username);
+	$title = $this->logindb->real_escape_string($title);
+    $statement = "INSERT INTO userld (disliked) VALUES '$title' WHERE email='$un'";
+	$response = $this->logindb->query($statement);
+}
+
 }
 ?>

@@ -34,6 +34,18 @@ function doValidate($sessionLogged){
     //returns false if registration fails
 }
 
+//Like a movie
+function doAddLikedMovie($email, $title){
+    $login = new loginDB();
+    return $login->likeMovie($email, $title);
+}
+
+//Dislike a movie
+function doAddDislikedMovie($email, $title){
+    $login = new loginDB();
+    return $login->dislikeMovie($email, $title);
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -45,13 +57,17 @@ function requestProcessor($request)
   switch ($request['type'])
   {
     case "login":
-      return doLogin($request['email'],$request['password']);
+        return doLogin($request['email'],$request['password']);
     case "registration":
-      return doRegister($request['email'],$request['password'],$request['firstName'],$request['lastName']);
+        return doRegister($request['email'],$request['password'],$request['firstName'],$request['lastName']);
     case "changepassword":
-      return doChangePassword($request['email'],$request['password']);
+        return doChangePassword($request['email'],$request['password']);
     case "validate_session":
-      return doValidate($request['sessionId']);
+        return doValidate($request['sessionId']);
+    case "like":
+        return doAddLikedMovie($request['email'], $request['title']);
+    case "like":
+        return doAddDislikedMovie($request['email'], $request['title']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
