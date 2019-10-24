@@ -43,6 +43,8 @@ public function register($username, $password, $firstName, $lastName){
 	$ln = $this->logindb->real_escape_string($lastName);
     $statement = "INSERT INTO login VALUES ('$un', '$pw', '$fn', '$ln')";
 	$response = $this->logindb->query($statement);
+    $statement = "INSERT INTO userld VALUES ('$un')";
+	$response = $this->logindb->query($statement);
 }
 
 public function changePassword($username, $password){

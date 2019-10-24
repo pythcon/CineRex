@@ -132,7 +132,7 @@
                              $.ajax({
                                  type:         "GET",
                                  url:          "dislike.php",
-                                 data:         "imdbid="+r.IMDBID,
+                                 data:         "movieTitle="+movieTitle,
 
                                  beforeSend: function(){         
                                     $("#B").html("Removing Movies like this from your reccomended list...");
@@ -156,7 +156,7 @@
                              $.ajax({
                                  type:         "GET",
                                  url:          "like.php",
-                                 data:         "imdbid="+r.IMDBID,
+                                 data:         "movieTitle="+movieTitle,
 
                                  beforeSend: function(){         
                                     $("#B").html("Adding Movies like this to your reccomended list...");
