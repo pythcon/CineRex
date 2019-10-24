@@ -80,7 +80,11 @@
                         document.cookie = imdbID;
 
                         poster = "<img src='"+r.Poster+"'>"
-                        $("#B").html(res + poster);
+                         
+                        //like/dislike button
+                        like = "<button class='dislike'><i class='fa fa-thumbs-o-down' aria-hidden='true'></i></button><button class='like'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i></button>";
+                         
+                        $("#B").html(res + poster + like);
                     }
                 });
              };    

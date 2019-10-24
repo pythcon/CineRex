@@ -324,10 +324,7 @@ function showSlides() {
                         document.cookie = imdbID;
 
                         poster = "<img src='"+r.Poster+"'>"
-                        //like/dislike button
-                        like = "<button class='dislike'><i class='fa fa-thumbs-o-down' aria-hidden='true'></i></button><button class='like'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i></button>";
-                         
-                        $("#B").html(res + poster + like);
+                        $("#B").html(res + poster);
                     }
                 });
              };    
