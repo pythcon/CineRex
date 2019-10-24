@@ -68,9 +68,11 @@ img {vertical-align: middle;}
 <body>
 <ul>
  <li><a href="index.html">Home</a></li>
-	
+	  <li><a href="dashboard.php">Dashboard</a></li> 
   <li><a href="changepassword.php">Change Password</a></li>
-  <li><a href="handler_logout.php">Logout</a></li>
+ 
+ <li><a href="handler_logout.php">Logout</a></li>
+
 
 </ul>
 <div style="width:100%;">
@@ -93,7 +95,51 @@ img {vertical-align: middle;}
 <div id= "B"></div>
 </div>
 </div>
+</script>
+    <div class= "split right">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        
+        <script type = "text/javascript"> 
+         $(document).ready( function(){
 
+           $("button").click(function(){ 
+
+             var movieTitle = $("#movieTitle").val();
+
+             if(movieTitle != ''){
+
+                 $.ajax({
+                     type:         "GET",
+                     url:         "API.php",
+                     data:         "movieTitle="+movieTitle,
+
+                     beforeSend: function(){         
+                        $("#B").html("Grabbing Movie Data....");
+                     },
+
+                     error: function(xhr, status, error) {  
+                        alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   
+                     },
+
+                     success: function(result){
+                        r = JSON.parse(result);
+                        res = "<br> Movie Name: "+r.Title+"<br><br> Year: "+r.Year+"<br> <br> Rated: "+r.Rated+"<br><br> Genre: "+r.Genre+"<br>";
+                         
+                        //get imdbID to store in like/dislike database
+                        var imdbID = r.IMDBID;
+                        document.cookie = imdbID;
+
+                        poster = "<img src='"+r.Poster+"'>"
+                        $("#B").html(res + poster);
+                    }
+                });
+             };    
+          });   
+        });                
+
+        </script>
+
+    </div>
 </body>
 
 </html>
