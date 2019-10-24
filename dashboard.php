@@ -11,7 +11,47 @@
 <meta charset = "UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <style>
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        }
+        h1 {
+            color: green;
+            text-align:center;
+            text-decoration: underline;
+        }
+        h2{
+            color: black;
+            text-align:center;
+        }
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #FF0000;
+        }
+        li {
+          float: left;
+        }
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        li a:hover {
+          background-color: #111;
+        }
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+    </style>
 
 </head>
 

@@ -2,7 +2,77 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #FF0000;
+        }
+        li {
+          float: left;
+        }
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        li a:hover {
+          background-color: #111;
+        }
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+        body {font-family: Arial, Helvetica, sans-serif;}
+        form {border: 3px solid #f1f1f1;}
+        input[type=text], input[type=password] {
+          width: 50%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        button {
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 10%;
+        }
+        button:hover {
+          opacity: 0.8;
+        }
+        .loginbtn {
+          width: auto;
+          padding: 10px 18px;
+          }
+        .imgcontainer {
+          text-align: center;
+          margin: 24px 0 12px 0;
+        }
+        img.avatar {
+          width: 40%;
+          border-radius: 50%;
+        }
+        span.psw {
+          float: right;
+          padding-top: 16px;
+        }
+        @media screen and (max-width: 300px) {
+          span.psw {
+             display: block;
+             float: none;
+          }
+
+        }
+    </style>
 </head>
 <body>
 
