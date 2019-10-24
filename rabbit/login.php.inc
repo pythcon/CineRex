@@ -43,28 +43,28 @@ public function register($username, $password, $firstName, $lastName){
 	$ln = $this->logindb->real_escape_string($lastName);
     $statement = "INSERT INTO login VALUES ('$un', '$pw', '$fn', '$ln')";
 	$response = $this->logindb->query($statement);
-    $statement = "INSERT INTO userld VALUES ('$un')";
+    $statement = "INSERT INTO userld (email,liked,disliked) VALUES ('$un','','')";
 	$response = $this->logindb->query($statement);
 }
 
 public function changePassword($username, $password){
     $un = $this->logindb->real_escape_string($username);
 	$pw = $this->logindb->real_escape_string($password);
-    $statement = "UPDATE login SET password='$password' WHERE email='$username'";
+    $statement = "UPDATE login SET password='$pw' WHERE email='$un'";
 	$response = $this->logindb->query($statement);
 }
 
 public function likeMovie($username, $title){
     $un = $this->logindb->real_escape_string($username);
 	$title = $this->logindb->real_escape_string($title);
-    $statement = "INSERT INTO userld (liked) VALUES '$title' WHERE email='$un'";
+    $statement = "UPDATE userld SET liked = CONCAT(liked, '$title', ',') WHERE email='$un'";
 	$response = $this->logindb->query($statement);
 }
 
 public function dislikeMovie($username, $title){
     $un = $this->logindb->real_escape_string($username);
 	$title = $this->logindb->real_escape_string($title);
-    $statement = "INSERT INTO userld (disliked) VALUES '$title' WHERE email='$un'";
+    $statement = "UPDATE userld SET disliked = CONCAT(disliked, '$title', ',') WHERE email='$un'";
 	$response = $this->logindb->query($statement);
 }
 

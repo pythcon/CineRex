@@ -66,7 +66,7 @@ function requestProcessor($request)
         return doValidate($request['sessionId']);
     case "like":
         return doAddLikedMovie($request['email'], $request['title']);
-    case "like":
+    case "dislike":
         return doAddDislikedMovie($request['email'], $request['title']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");

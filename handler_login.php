@@ -18,7 +18,7 @@
     //echo "<div>".$loginCheck."</div>";
     if ($loginCheck == 1){
         $_SESSION['logged'] = true;
-        $_SESSION = $_POST['email'];
+        $_SESSION['email'] = $_POST['email'];
         redirect("<span style=\"color:green;\">Successfully Logged in! Redirecting now...</span>", "dashboard.php", 3);
     }else{
         redirect("<span style=\"color:red;\">Login Failed. Please try again. Redirecting...</span>", "index.html", 3);

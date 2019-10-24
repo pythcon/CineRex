@@ -12,7 +12,7 @@
     $request = array();
     $request['type']        = "dislike";
     $request['email']       = $_SESSION['email'];
-    $request['title']     = $_GET['movieTitle'];
+    $request['title']       = $_GET['movieTitle'];
     $request['message']     = "registration";
     //$loginCheck = $client->send_request($request);
     $registrationCheck = $client->publish($request);
