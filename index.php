@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
 <html>
-<meta charset = "UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 
 h1 { 
@@ -320,7 +321,11 @@ function showSlides() {
                         document.cookie = imdbID;
 
                         poster = "<img src='"+r.Poster+"'>"
-                        $("#B").html(res + poster);
+                         
+                        //like/dislike button
+                        like = "<button class='dislike'><i class='fa fa-thumbs-o-down' aria-hidden='true'></i></button><button class='like'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i></button>";
+                         
+                        $("#B").html(res + poster + like);
                     }
                 });
              };    
