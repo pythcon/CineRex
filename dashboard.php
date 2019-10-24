@@ -8,8 +8,9 @@
 
 ?>
 <html>
-<meta charset = "UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
     <style>
         .center {
@@ -85,7 +86,6 @@
 <div id= "B"></div>
 </div>
 </div>
-</script>
     <div class= "split right">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         
@@ -100,7 +100,7 @@
 
                  $.ajax({
                      type:         "GET",
-                     url:         "API.php",
+                     url:          "API.php",
                      data:         "movieTitle="+movieTitle,
 
                      beforeSend: function(){         
@@ -122,13 +122,61 @@
                         poster = "<img src='"+r.Poster+"'>"
                          
                         //like/dislike button
-                        like = "<button class='dislike'><i class='fa fa-thumbs-o-down' aria-hidden='true'></i></button><button class='like'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i></button>";
+                        like = "<button id='dislike'><i class='fa fa-thumbs-o-down' aria-hidden='true'></i></button><button id='like'><i class='fa fa-thumbs-o-up' aria-hidden='true'></i></button>";
                          
                         $("#B").html(res + poster + like);
+                        $("#dislike").click(function(){ 
+
+                         if(movieTitle != ''){
+
+                             $.ajax({
+                                 type:         "GET",
+                                 url:          "dislike.php",
+                                 data:         "imdbid="+r.IMDBID,
+
+                                 beforeSend: function(){         
+                                    $("#B").html("Removing Movies like this from your reccomended list...");
+                                 },
+
+                                 error: function(xhr, status, error) {  
+                                    alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   
+                                 },
+
+                                 success: function(result){
+                                    alert("Added to your disliked list");
+                                    $("#B").html(res + poster + like);
+                                }
+                            });
+                         };    
+                      });
+                      $("#like").click(function(){ 
+
+                         if(movieTitle != ''){
+
+                             $.ajax({
+                                 type:         "GET",
+                                 url:          "like.php",
+                                 data:         "imdbid="+r.IMDBID,
+
+                                 beforeSend: function(){         
+                                    $("#B").html("Adding Movies like this to your reccomended list...");
+                                 },
+
+                                 error: function(xhr, status, error) {  
+                                    alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   
+                                 },
+
+                                 success: function(result){
+                                    alert("Added to your liked list");
+                                    $("#B").html(res + poster + like);
+                                }
+                            });
+                         };    
+                      });
                     }
-                });
-             };    
-          });   
+                  });
+                };    
+            });   
         });                
 
         </script>
