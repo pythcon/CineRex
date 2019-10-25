@@ -95,12 +95,14 @@
                 if (count($reccomendationsArray) < 2){
                     $movieSelector = 0;
                 }else{
-                    $movieSelector = rand(0,count($reccomendationsArray)-1);
+                    while ($reccomendationsArray[$movieSelector] == ''){
+                        $movieSelector = rand(0,count($reccomendationsArray)-1);
+                    }
                 }
             
-                $command = escapeshellcmd('python3 recomend3.py '.$reccomendationsArray[$movieSelector]);
+                $command = escapeshellcmd("python3 recomend3.py '$reccomendationsArray[$movieSelector]'");
                 $results = shell_exec($command);//.$reccomendationsArray[$movieSelector]);
-                echo "<div>"$reccomendationsArray[0].$results."</div>";
+                echo "<div>Because you liked <b>".$reccomendationsArray[$movieSelector]. "</b><br>".$results."</div>";
             ?>
         </div>
 
