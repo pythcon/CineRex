@@ -49,6 +49,7 @@ function doAddDislikedMovie($email, $title){
 //get likes
 function doGetLikes($email){
     $login = new loginDB();
+    echo $login->getLikes($email);
     return $login->getLikes($email);
 }
 

@@ -88,8 +88,8 @@
                 $request['type']    = "getLikes";
                 $request['email']   = $_SESSION['email'];
                 $request['message'] = "getLikes";
-                //$loginCheck = $client->send_request($request);
-                $reccomendations = $client->publish($request);
+                $reccomendations = $client->send_request($request);
+                //$reccomendations = $client->publish($request);
             
                 $reccomendationsArray = explode(",", $reccomendations);
                 if (count($reccomendationsArray) < 2){
@@ -98,8 +98,9 @@
                     $movieSelector = rand(0,count($reccomendationsArray)-1);
                 }
             
-                //$result_last_line = exec("python3 /my/path/myScript.py " .$reccomendationsArray[$movieSelector]);
-                //echo "<div>".$result_last_line."</div>";
+                $command = escapeshellcmd('python3 recomend3.py '.$reccomendationsArray[$movieSelector]);
+                $results = shell_exec($command);//.$reccomendationsArray[$movieSelector]);
+                echo "<div>"$reccomendationsArray[0].$results."</div>";
             ?>
         </div>
 
