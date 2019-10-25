@@ -72,10 +72,54 @@ table, th, td {
 
     <div>
         <?php
-            
+            session_start();
+            include("usefulfunctions.php");
+            require_once('rabbit/path.inc');
+            require_once('rabbit/get_host_info.inc');
+            require_once('rabbit/rabbitMQLib.inc');
+
+            $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+
+            $request = array();
+            $request['type'] = "getLikes";
+            $request['email'] = $_SESSION['email'];
+            $request['message'] = "getLikes";
+            //$loginCheck = $client->send_request($request);
+            $likes = $client->publish($request);
+            $likesArray = explode(",", $likes);
+        
+            $out = "<table><tr><td>Likes</td></tr>";
+            for($x = 0; $x < count($likesArray); $x++){
+                $out .= "<tr><td>" .$likesArray[$x] ."</td></tr>";
+            }
+            $out .= "<table>";
+            echo $out;
         ?>
     </div>
-    
+        <?php
+            session_start();
+            include("usefulfunctions.php");
+            require_once('rabbit/path.inc');
+            require_once('rabbit/get_host_info.inc');
+            require_once('rabbit/rabbitMQLib.inc');
+
+            $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+
+            $request = array();
+            $request['type'] = "getDislikes";
+            $request['email'] = $_SESSION['email'];
+            $request['message'] = "getDislikes";
+            //$loginCheck = $client->send_request($request);
+            $dislikes = $client->publish($request);
+            $dislikesArray = explode(",", $dislikes);
+        
+            $out = "<table><tr><td>Dislikes</td></tr>";
+            for($x = 0; $x < count($dislikesArray); $x++){
+                $out .= "<tr><td>" .$dislikesArray[$x] ."</td></tr>";
+            }
+            $out .= "<table>";
+            echo $out;
+        ?>
     <div>
     
     </div>

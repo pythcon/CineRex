@@ -87,7 +87,7 @@
 
                 $request = array();
                 $request['type']    = "getLikes";
-                $request['email']   = $_POST['email'];
+                $request['email']   = $_SESSION['email'];
                 $request['message'] = "getLikes";
                 //$loginCheck = $client->send_request($request);
                 $reccomendations = $client->publish($request);
