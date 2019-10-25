@@ -200,6 +200,7 @@ if (!$_SESSION['logged']){
     <ul>
      <li><a href='index.html'>Home</a></li>
  <li><a href='dashboard.php'>Dashboard</a></li>
+ 	  <li><a href='preferences.php'>Likes/Dislikes</a></li> 
       <li><a href='changepassword.html'>Change Password</a></li>
       <li><a href='handler_logout.php'>Logout</a></li>
 	
