@@ -52,7 +52,7 @@ similar_movies =  list(enumerate(cosine_sim[movie_index]))
 
 #get a list of similar movies(most similar to least similar)
 sorted_similar_movies = sorted(similar_movies,key=lambda x:x[1],reverse=True)
-
+sorted_similar_movies.pop(0)
 #recommend 5 most similar movies
 i=0
 for element in sorted_similar_movies:
