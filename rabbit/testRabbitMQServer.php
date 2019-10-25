@@ -83,7 +83,7 @@ function requestProcessor($request)
     case "getLikes":
         return doGetLikes($request['email']);
     case "getDislikes":
-        return doGetDisikes($request['email']);
+        return doGetDislikes($request['email']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
