@@ -7,6 +7,12 @@ table, th, td {
     border: 1px solid black;
 }
 
+.center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        }
  ul {
           list-style-type: none;
           margin: 0;
@@ -28,6 +34,22 @@ table, th, td {
           background-color: #111;
         }
 		
+		.center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        }
+        h1 {
+            color: green;
+            text-align:center;
+            text-decoration: underline;
+        }
+        h2{
+            color: black;
+            text-align:center;
+        }
+		
 
 </style>
 </head>
@@ -43,6 +65,11 @@ table, th, td {
 
 
 </ul>
+
+<img src="popcorn.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
+
+<h1> Here are your liked and disliked movies!</h1>
+
 
 
 </body>
