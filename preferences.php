@@ -23,7 +23,7 @@ table, th, td {
           margin-right: auto;
           width: 50%;
         }
- ul {
+	ul {
           list-style-type: none;
           margin: 0;
           padding: 0;
@@ -44,11 +44,6 @@ table, th, td {
           background-color: #111;
         }
 		
-		.center {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          width: 50%;
         }
         h1 {
             color: green;
