@@ -1,4 +1,14 @@
+<?php
+    session_start();
+    include("usefulfunctions.php");
+    require_once('rabbit/path.inc');
+    require_once('rabbit/get_host_info.inc');
+    require_once('rabbit/rabbitMQLib.inc');
 
+    //check to see if user is logged in
+    loginCheck();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +23,7 @@ table, th, td {
           margin-right: auto;
           width: 50%;
         }
- ul {
+	ul {
           list-style-type: none;
           margin: 0;
           padding: 0;
@@ -34,11 +44,6 @@ table, th, td {
           background-color: #111;
         }
 		
-		.center {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          width: 50%;
         }
         h1 {
             color: green;
@@ -72,11 +77,6 @@ table, th, td {
 
     <div>
         <?php
-            session_start();
-            include("usefulfunctions.php");
-            require_once('rabbit/path.inc');
-            require_once('rabbit/get_host_info.inc');
-            require_once('rabbit/rabbitMQLib.inc');
 
             $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
@@ -97,11 +97,6 @@ table, th, td {
         ?>
     </div>
         <?php
-            session_start();
-            include("usefulfunctions.php");
-            require_once('rabbit/path.inc');
-            require_once('rabbit/get_host_info.inc');
-            require_once('rabbit/rabbitMQLib.inc');
 
             $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 

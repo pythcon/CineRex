@@ -2,9 +2,12 @@
 <?php
     session_start();
     include("usefulfunctions.php");
+    require_once('rabbit/path.inc');
+    require_once('rabbit/get_host_info.inc');
+    require_once('rabbit/rabbitMQLib.inc');
 
     //check to see if user is logged in
-    //loginCheck();
+    loginCheck();
 
 ?>
 <html>
@@ -76,12 +79,8 @@
         <h2>Here are your latest movie preferences!</h2>
         
         <!-- Div that holds movie reccomendations-->
-        <span>
+        <div>
             <?php
-                include("usefulfunctions.php");
-                require_once('rabbit/path.inc');
-                require_once('rabbit/get_host_info.inc');
-                require_once('rabbit/rabbitMQLib.inc');
 
                 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
@@ -99,10 +98,10 @@
                     $movieSelector = rand(0,count($reccomendationsArray)-1);
                 }
             
-                $result_last_line = exec("python3 /my/path/myScript.py " .$reccomendationsArray[$movieSelector]);
-                echo "<div>".$result_last_line."</div>";
+                //$result_last_line = exec("python3 /my/path/myScript.py " .$reccomendationsArray[$movieSelector]);
+                //echo "<div>".$result_last_line."</div>";
             ?>
-        </span>
+        </div>
 
     </div>
 
@@ -165,7 +164,7 @@
                                  data:         "movieTitle="+movieTitle,
 
                                  beforeSend: function(){         
-                                    $("#B").html("Removing Movies like this from your reccomended list...");
+                                    $("#B").html("Removing Movies like this from your recommended list...");
                                  },
 
                                  error: function(xhr, status, error) {  
@@ -189,7 +188,7 @@
                                  data:         "movieTitle="+movieTitle,
 
                                  beforeSend: function(){         
-                                    $("#B").html("Adding Movies like this to your reccomended list...");
+                                    $("#B").html("Adding Movies like this to your recommended list...");
                                  },
 
                                  error: function(xhr, status, error) {  
