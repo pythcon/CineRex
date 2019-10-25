@@ -67,14 +67,43 @@
 
 </ul>
 <div style="width:100%;">
-<div style="float:left; width:50%;">
-<h1><b>Welcome back!</b></h1>
+    <div style="float:left; width:50%;">
+        <h1><b>Welcome back!</b></h1>
 
-<img src="popcorn.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
+        <img src="popcorn.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
 
-<h2>Here are your latest movie preferences!</h2>
+        <h2>Here are your latest movie preferences!</h2>
+        
+        <!-- Div that holds movie reccomendations-->
+        <span>
+            <?php
+                include("usefulfunctions.php");
+                require_once('rabbit/path.inc');
+                require_once('rabbit/get_host_info.inc');
+                require_once('rabbit/rabbitMQLib.inc');
 
-</div>
+                $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+
+                $request = array();
+                $request['type']    = "getLikes";
+                $request['email']   = $_POST['email'];
+                $request['message'] = "getLikes";
+                //$loginCheck = $client->send_request($request);
+                $reccomendations = $client->publish($request);
+            
+                $reccomendationsArray = explode(",", $reccomendations);
+                if (count($reccomendationsArray) < 2){
+                    $movieSelector = 0;
+                }else{
+                    $movieSelector = rand(0,count($reccomendationsArray)-1);
+                }
+            
+                $result_last_line = exec("python3 /my/path/myScript.py " .$reccomendationsArray[$movieSelector]);
+                echo "<div>".$result_last_line."</div>";
+            ?>
+        </span>
+
+    </div>
 
 <div style= "float:right; width:50%">
  <h1>  Movie Information:</h1>

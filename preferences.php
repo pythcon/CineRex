@@ -70,7 +70,15 @@ table, th, td {
 
 <h1> Here are your liked and disliked movies!</h1>
 
-
+    <div>
+        <?php
+            
+        ?>
+    </div>
+    
+    <div>
+    
+    </div>
 
 </body>
 </html>

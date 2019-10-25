@@ -46,6 +46,12 @@ function doAddDislikedMovie($email, $title){
     return $login->dislikeMovie($email, $title);
 }
 
+//get reccomendations
+function doGetLikes($email){
+    $login = new loginDB();
+    return $login->getLikes($email);
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -68,6 +74,8 @@ function requestProcessor($request)
         return doAddLikedMovie($request['email'], $request['title']);
     case "dislike":
         return doAddDislikedMovie($request['email'], $request['title']);
+    case "getReccomendations":
+        return doGetLikes($request['email']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
