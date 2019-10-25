@@ -136,7 +136,7 @@
                                  data:         "movieTitle="+movieTitle,
 
                                  beforeSend: function(){         
-                                    $("#B").html("Removing Movies like this from your reccomended list...");
+                                    $("#B").html("Removing Movies like this from your recommended list...");
                                  },
 
                                  error: function(xhr, status, error) {  
@@ -160,7 +160,7 @@
                                  data:         "movieTitle="+movieTitle,
 
                                  beforeSend: function(){         
-                                    $("#B").html("Adding Movies like this to your reccomended list...");
+                                    $("#B").html("Adding Movies like this to your recommended list...");
                                  },
 
                                  error: function(xhr, status, error) {  
