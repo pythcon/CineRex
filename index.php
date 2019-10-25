@@ -217,7 +217,7 @@ if (!$_SESSION['logged']){
 <div style="width:100%;">
 <div style="float:left; width:50%;">
 <h1>Welcome to CineRex!</h1>
-<img src="popcorn.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
+<img src="Dino2.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
 
 <h1>Latest Movies!</h1>
 
