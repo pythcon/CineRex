@@ -72,6 +72,7 @@ public function getLikes($username){
     $un = $this->logindb->real_escape_string($username);
     $statement = "SELECT liked FROM userld WHERE email='$un'";
 	$response = $this->logindb->query($statement);
+    $result = "";
     while($row = $response->fetch_assoc()) {
         $result .= $row['liked'];
     }
