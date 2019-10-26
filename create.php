@@ -37,7 +37,6 @@ input[type=text], input[type=password], input[type=email] {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  float: left;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
