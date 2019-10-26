@@ -83,7 +83,7 @@
         <div>
             
             <?php
-
+            
                 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
                 $request = array();
@@ -93,21 +93,32 @@
                 $reccomendations = $client->send_request($request);
                 //$reccomendations = $client->publish($request);
             
-                $reccomendationsArray = explode(",", $reccomendations);
-                if (count($reccomendationsArray) < 2){
-                    $movieSelector = 0;
-                }else{
-                    while ($reccomendationsArray[$movieSelector] == ''){
-                        $movieSelector = rand(0,count($reccomendationsArray)-1);
+                    $reccomendationsArray = explode(",", $reccomendations);
+            
+                //loops if there are 0 reccomendations
+                //while(true){
+                    if (count($reccomendationsArray) < 2){
+                        $movieSelector = 0;
+                    }else{
+                        while ($reccomendationsArray[$movieSelector] == ''){
+                            $movieSelector = rand(0,count($reccomendationsArray)-1);
+                        }
                     }
-                }
+
+                    $command = escapeshellcmd("python3 recomend3.py '$reccomendationsArray[$movieSelector]'");
+                    $results = shell_exec($command);//.$reccomendationsArray[$movieSelector]);
+
+                    $resultsArray = explode("\n", $results);
+
+                    //echo "<script>alert(".count($resultsArray).")</script>";
+                    //if (count($resultsArray) > 1){
+                    //    break;
+                    //}
             
-                $command = escapeshellcmd("python3 recomend3.py '$reccomendationsArray[$movieSelector]'");
-                $results = shell_exec($command);//.$reccomendationsArray[$movieSelector]);
-                echo "<div>Because you liked <b>".$reccomendationsArray[$movieSelector]."</b></div>";
+                //}
             
-                $resultsArray = explode("\n", $results);
-                
+                echo "<div>Because you liked <b>".ucwords($reccomendationsArray[$movieSelector])."</b></div>";
+            
                 
             ?>
             
@@ -122,11 +133,15 @@
                  var res = "";
                  var x = 0;
                    
+                 if (reccomendations[0] == ""){
+                     document.getElementById("C").innerHTML = "There are no reccomended movies for this title, please refresh the page to try a different movie!";
+                 }
+                 
                  while (x < reccomendations.length){
                  var movieTitle = reccomendations[x];
 
                  if(movieTitle != ''){
-
+                        
                      $.ajax({
                          type:         "GET",
                          url:          "API.php",
@@ -220,7 +235,7 @@
                              $.ajax({
                                  type:         "GET",
                                  url:          "dislike.php",
-                                 data:         "movieTitle="+movieTitle,
+                                 data:         "movieTitle="+r.Title,
 
                                  beforeSend: function(){         
                                     $("#B").html("Removing Movies like this from your recommended list...");
@@ -244,7 +259,7 @@
                              $.ajax({
                                  type:         "GET",
                                  url:          "like.php",
-                                 data:         "movieTitle="+movieTitle,
+                                 data:         "movieTitle="+r.Title,
 
                                  beforeSend: function(){         
                                     $("#B").html("Adding Movies like this to your recommended list...");
