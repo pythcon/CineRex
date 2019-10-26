@@ -96,7 +96,7 @@
                     $reccomendationsArray = explode(",", $reccomendations);
             
                 //loops if there are 0 reccomendations
-                //while(true){
+                while(true){
                     if (count($reccomendationsArray) < 2){
                         $movieSelector = 0;
                     }else{
@@ -111,11 +111,11 @@
                     $resultsArray = explode("\n", $results);
 
                     //echo "<script>alert(".count($resultsArray).")</script>";
-                    //if (count($resultsArray) > 1){
-                    //    break;
-                    //}
+                    if ($resultsArray[0] != ''){
+                        break;
+                    }
             
-                //}
+                }
             
                 echo "<div>Because you liked <b>".ucwords($reccomendationsArray[$movieSelector])."</b></div>";
             
@@ -133,9 +133,9 @@
                  var res = "";
                  var x = 0;
                    
-                 if (reccomendations[0] == ""){
-                     document.getElementById("C").innerHTML = "There are no reccomended movies for this title, please refresh the page to try a different movie!";
-                 }
+                 /*if (reccomendations[0] == ""){
+                     document.getElementById("C").innerHTML = "There are no recommended movies for this title, please refresh the page to try a different movie!";
+                 }*/
                  
                  while (x < reccomendations.length){
                  var movieTitle = reccomendations[x];
@@ -148,7 +148,7 @@
                          data:         "movieTitle="+movieTitle,
 
                          beforeSend: function(){         
-                            $("#C").html("Loading Reccomended Movies....<br><table>");
+                            $("#C").html("Loading Recommended Movies....<br><table>");
                          },
 
                          error: function(xhr, status, error) {  
