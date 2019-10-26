@@ -62,13 +62,14 @@
           border-radius: 50%;
         }
         span.psw {
-          float: right;
+          float: left;
           padding-top: 16px;
         }
         @media screen and (max-width: 300px) {
           span.psw {
              display: block;
-             float: none;
+             float: left;
+			 
           }
 
         }
@@ -130,8 +131,8 @@ if (!$_SESSION['logged']){
 
   <div class="container" style="background-color:#f1f1f1">
 	 <button type="submit" class ="loginbtn">Login</button>
-      <button  type="button" style="background-color:#FF0000"> <a href = "index.html">Cancel</a></button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+      <button  type="button" class = "loginbtn"style="background-color:#FF0000"> <a href = "index.html">Cancel</a></button><br>
+    <span class="psw"> <a href="#">Forgot Password?</a></span>
   </div>
 </form>
 

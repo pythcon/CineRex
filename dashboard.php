@@ -64,7 +64,7 @@
 <ul>
  <li><a href="index.html">Home</a></li>
 	  <li><a href="dashboard.php">Dashboard</a></li> 
-	  <li><a href="preferences.php">Likes/Dislikes</a></li> 
+	  <li><a href="preferences.php">My List</a></li> 
   <li><a href="changepassword.php">Change Password</a></li>
  
  <li><a href="handler_logout.php">Logout</a></li>
@@ -157,10 +157,10 @@
                  var x = 0;
                    
                  if (notEnoughMovies){
-                    document.getElementById("C").innerHTML = "You need at least 3 movies in your liked list to display reccomendations. Search up some movies on the side! &nbsp;&nbsp;<button value='Refresh Recommendations' onClick='window.location.reload();'>Refresh Recommendations</button>";
+                    document.getElementById("C").innerHTML = "You need at least 3 movies in your liked list to display recommendations. Search up some movies on the side! &nbsp;&nbsp;<button value='Refresh Recommendations' onClick='window.location.reload();'>Refresh Recommendations</button>";
                  }
                  if (noRecommendations){
-                    document.getElementById("C").innerHTML = 'There are no reccomendations for this title. Please try adding more movies or refreshing the page!';
+                    document.getElementById("C").innerHTML = 'There are no recommendations for this title. Please try adding more movies or refreshing the page!';
                  }
                  
                  while (x < reccomendations.length){
