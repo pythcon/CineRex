@@ -129,7 +129,7 @@ span.psw {
 
 <form action="handler_registration.php" method="post">
   <div class="imgcontainer">
-    <img src="popcorn.jpg" alt="Avatar" class="avatar" style ="width:200px;height:200px;">
+    <img src="Dino2.jpg" alt="Avatar" class="avatar" style ="width:200px;height:200px;">
   </div>
 
   <div class="container">

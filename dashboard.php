@@ -74,7 +74,7 @@
     <div style="float:left; width:50%;">
         <h1><b>Welcome back!</b></h1>
 
-        <img src="popcorn.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
+        <img src="Dino2.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
 
         <h2>Here are your latest movie preferences!</h2>
         
