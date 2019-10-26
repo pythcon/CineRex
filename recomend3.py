@@ -40,7 +40,7 @@ count_matrix = cv.fit_transform(df["combined_attributes"])
 cosine_sim = cosine_similarity(count_matrix) 
 
 movie_user_likes = sys.argv[1] #input("Enter Movie Name:") 
-movie_user_likes = movie_user_likes.title() 
+#movie_user_likes = movie_user_likes.title() 
 
 #print ("enter movie name", sys.arg["enter movie name"])
 
