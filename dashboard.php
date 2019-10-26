@@ -93,32 +93,35 @@
                 $reccomendations = $client->send_request($request);
                 //$reccomendations = $client->publish($request);
             
-                    $reccomendationsArray = explode(",", $reccomendations);
+                $reccomendationsArray = explode(",", $reccomendations);
+                if (count($reccomendationsArray)>3){
             
-                //loops if there are 0 reccomendations
-                while(true){
-                    if (count($reccomendationsArray) < 2){
-                        $movieSelector = 0;
-                    }else{
-                        while ($reccomendationsArray[$movieSelector] == ''){
-                            $movieSelector = rand(0,count($reccomendationsArray)-1);
+                    //loops if there are 0 reccomendations
+                    while(true){
+                        if (count($reccomendationsArray) < 2){
+                            $movieSelector = 0;
+                        }else{
+                            while ($reccomendationsArray[$movieSelector] == ''){
+                                $movieSelector = rand(0,count($reccomendationsArray)-1);
+                            }
                         }
+
+                        $command = escapeshellcmd("python3 recomend3.py '$reccomendationsArray[$movieSelector]'");
+                        $results = shell_exec($command);//.$reccomendationsArray[$movieSelector]);
+
+                        $resultsArray = explode("\n", $results);
+
+                        //echo "<script>alert(".count($resultsArray).")</script>";
+                        if ($resultsArray[0] != ''){
+                            break;
+                        }
+
                     }
-
-                    $command = escapeshellcmd("python3 recomend3.py '$reccomendationsArray[$movieSelector]'");
-                    $results = shell_exec($command);//.$reccomendationsArray[$movieSelector]);
-
-                    $resultsArray = explode("\n", $results);
-
-                    //echo "<script>alert(".count($resultsArray).")</script>";
-                    if ($resultsArray[0] != ''){
-                        break;
-                    }
-            
-                }
             
                 echo "<div>Because you liked <b>".ucwords($reccomendationsArray[$movieSelector])."</b></div>";
-            
+                }else{
+                    $notEnoughMovies = true;
+                }
                 
             ?>
             
@@ -129,13 +132,14 @@
                //$("#reccomendationsBtn").click(function(){ 
 
                  var reccomendations = <?php echo json_encode($resultsArray); ?>;
+                 var notEnoughMovies = <?php echo json_encode($notEnoughMovies); ?>;
                  var output = "";
                  var res = "";
                  var x = 0;
                    
-                 /*if (reccomendations[0] == ""){
-                     document.getElementById("C").innerHTML = "There are no recommended movies for this title, please refresh the page to try a different movie!";
-                 }*/
+                 if (notEnoughMovies){
+                    document.getElementById("C").innerHTML = 'You need at least 3 movies in your liked list to display reccomendations. Search up some movies on the side!';
+                 }
                  
                  while (x < reccomendations.length){
                  var movieTitle = reccomendations[x];
@@ -177,7 +181,6 @@
             
         </div>
         <div id="C"></div>
-
     </div>
 
 <div style= "float:right; width:50%">

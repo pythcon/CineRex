@@ -5,7 +5,7 @@
     require_once('rabbit/get_host_info.inc');
     require_once('rabbit/rabbitMQLib.inc');
 
-    sleep (2.5);
+    sleep (1);
 
     $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 
