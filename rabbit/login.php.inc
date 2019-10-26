@@ -83,7 +83,11 @@ public function getDislikes($username){
     $un = $this->logindb->real_escape_string($username);
     $statement = "SELECT disliked FROM userld WHERE email='$un'";
 	$response = $this->logindb->query($statement);
-    return $response;
+    $result = "";
+    while($row = $response->fetch_assoc()) {
+        $result .= $row['disliked'];
+    }
+    return $result;
 }
 
 }

@@ -93,11 +93,23 @@
                 $reccomendations = $client->send_request($request);
                 //$reccomendations = $client->publish($request);
             
-                $reccomendationsArray = explode(",", $reccomendations);
+                $reccomendationsArray = explode(",", $reccomendations);    
+            
+                $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+
+                $request = array();
+                $request['type']    = "getDislikes";
+                $request['email']   = $_SESSION['email'];
+                $request['message'] = "getDislikes";
+                $dislikes = $client->send_request($request);
+                //$reccomendations = $client->publish($request);
+            
+                $dislikesArray = explode(",", $dislikes);
+            
+            
                 if (count($reccomendationsArray)>3){
             
                     //loops if there are 0 reccomendations
-                    while(true){
                         if (count($reccomendationsArray) < 2){
                             $movieSelector = 0;
                         }else{
@@ -111,14 +123,19 @@
 
                         $resultsArray = explode("\n", $results);
 
-                        //echo "<script>alert(".count($resultsArray).")</script>";
-                        if ($resultsArray[0] != ''){
-                            break;
+                        if ($resultsArray[0] == ''){
+                            $noRecommendations = true;
                         }
-
-                    }
             
-                echo "<div>Because you liked <b>".ucwords($reccomendationsArray[$movieSelector])."</b></div>";
+                echo "<div>Because you liked <b>".ucwords($reccomendationsArray[$movieSelector])."</b>&nbsp;&nbsp;<button value='Refresh Recommendations' onClick='window.location.reload();'>Refresh Recommendations</button></div>";
+                    
+                for ($counter = 0; $counter < count($dislikesArray); $counter++){
+                    $index = array_search($dislikesArray[$counter],$resultsArray);
+                    if($index !== FALSE){
+                        unset($resultsArray[$index]);
+                    }
+                }
+                    
                 }else{
                     $notEnoughMovies = true;
                 }
@@ -133,12 +150,16 @@
 
                  var reccomendations = <?php echo json_encode($resultsArray); ?>;
                  var notEnoughMovies = <?php echo json_encode($notEnoughMovies); ?>;
+                 var noRecommendations = <?php echo json_encode($noRecommendations); ?>;
                  var output = "";
                  var res = "";
                  var x = 0;
                    
                  if (notEnoughMovies){
                     document.getElementById("C").innerHTML = 'You need at least 3 movies in your liked list to display reccomendations. Search up some movies on the side!';
+                 }
+                 if (noRecommendations){
+                    document.getElementById("C").innerHTML = 'There are no reccomendations for this title. Please try adding more movies or refreshing the page!';
                  }
                  
                  while (x < reccomendations.length){
