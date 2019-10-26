@@ -84,8 +84,8 @@ table, th, td {
             $request['type'] = "getLikes";
             $request['email'] = $_SESSION['email'];
             $request['message'] = "getLikes";
-            //$loginCheck = $client->send_request($request);
-            $likes = $client->publish($request);
+            $likes = $client->send_request($request);
+            //$likes = $client->publish($request);
             $likesArray = explode(",", $likes);
         
             $out = "<table><tr><td>Likes</td></tr>";
@@ -104,8 +104,8 @@ table, th, td {
             $request['type'] = "getDislikes";
             $request['email'] = $_SESSION['email'];
             $request['message'] = "getDislikes";
-            //$loginCheck = $client->send_request($request);
-            $dislikes = $client->publish($request);
+            $dislikes = $client->send_request($request);
+            //$dislikes = $client->publish($request);
             $dislikesArray = explode(",", $dislikes);
         
             $out = "<table><tr><td>Dislikes</td></tr>";
