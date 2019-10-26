@@ -80,9 +80,7 @@
         <h2>Here are your latest movie preferences!</h2>
         
         <!-- Div that holds movie reccomendations-->
-        <div id="C"></div>
         <div>
-            <button id='reccomendationsBtn'>Reccomend</button>
             
             <?php
 
@@ -117,7 +115,7 @@
            <script type = "text/javascript"> 
              $(document).ready( function(){
 
-               $("#reccomendationsBtn").click(function(){ 
+               //$("#reccomendationsBtn").click(function(){ 
 
                  var reccomendations = <?php echo json_encode($resultsArray); ?>;
                  var output = "";
@@ -153,7 +151,7 @@
                  };
                      x++;
                }
-              });    
+              //});    
             });                
 
         </script>
@@ -162,6 +160,7 @@
             
             
         </div>
+        <div id="C"></div>
 
     </div>
 
