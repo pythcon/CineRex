@@ -14,6 +14,7 @@
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <head>
     <style>
         .center {
@@ -79,7 +80,10 @@
         <h2>Here are your latest movie preferences!</h2>
         
         <!-- Div that holds movie reccomendations-->
+        <div id="C"></div>
         <div>
+            <button id='reccomendationsBtn'>Reccomend</button>
+            
             <?php
 
                 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
@@ -102,8 +106,61 @@
             
                 $command = escapeshellcmd("python3 recomend3.py '$reccomendationsArray[$movieSelector]'");
                 $results = shell_exec($command);//.$reccomendationsArray[$movieSelector]);
-                echo "<div>Because you liked <b>".$reccomendationsArray[$movieSelector]. "</b><br>".$results."</div>";
+                echo "<div>Because you liked <b>".$reccomendationsArray[$movieSelector]."</b></div>";
+            
+                $resultsArray = explode("\n", $results);
+                
+                
             ?>
+            
+           <!--API CALL TO GET RECCOMENDED MOVIE POSTERS-->
+           <script type = "text/javascript"> 
+             $(document).ready( function(){
+
+               $("#reccomendationsBtn").click(function(){ 
+
+                 var reccomendations = <?php echo json_encode($resultsArray); ?>;
+                 var output = "";
+                 var res = "";
+                 var x = 0;
+                   
+                 while (x < reccomendations.length){
+                 var movieTitle = reccomendations[x];
+
+                 if(movieTitle != ''){
+
+                     $.ajax({
+                         type:         "GET",
+                         url:          "API.php",
+                         data:         "movieTitle="+movieTitle,
+
+                         beforeSend: function(){         
+                            $("#C").html("Loading Reccomended Movies....");
+                         },
+
+                         error: function(xhr, status, error) {  
+                            alert( "Error Mesaage:  \r\nNumeric code is: "  + xhr.status + " \r\nError is " + error);   
+                         },
+
+                         success: function(result){
+                            r = JSON.parse(result);
+                            res = "Movie Name: "+r.Title + "<br>";
+
+                            output = res + "<img style='display:flex;' height='200px' width='150px' src='"+r.Poster+"'><br>";
+                            $("#C").append(output);
+                        }
+                    });
+                 };
+                     x++;
+               }
+              });    
+            });                
+
+        </script>
+            
+            
+            
+            
         </div>
 
     </div>
@@ -119,12 +176,11 @@
 </div>
 </div>
     <div class= "split right">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         
         <script type = "text/javascript"> 
          $(document).ready( function(){
 
-           $("button").click(function(){ 
+           $("#btn").click(function(){ 
 
              var movieTitle = $("#movieTitle").val();
 
