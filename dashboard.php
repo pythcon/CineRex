@@ -133,7 +133,7 @@
                          data:         "movieTitle="+movieTitle,
 
                          beforeSend: function(){         
-                            $("#C").html("Loading Reccomended Movies....");
+                            $("#C").html("Loading Reccomended Movies....<br><table>");
                          },
 
                          error: function(xhr, status, error) {  
@@ -142,15 +142,16 @@
 
                          success: function(result){
                             r = JSON.parse(result);
-                            res = "Movie Name: "+r.Title + "<br>";
+                            res = "<tr><td>Movie Name: "+r.Title + "</td>";
 
-                            output = res + "<img style='display:flex;' height='200px' width='150px' src='"+r.Poster+"'><br>";
+                            output = res + "<td><img style='display:flex;' height='200px' width='150px' src='"+r.Poster+"'></td></tr>";
                             $("#C").append(output);
                         }
                     });
                  };
                      x++;
                }
+                 $("#C").append("</table>");
               //});    
             });                
 
