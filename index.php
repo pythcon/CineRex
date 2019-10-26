@@ -225,21 +225,33 @@ if (!$_SESSION['logged']){
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-  <div class="numbertext">1 / 3</div>
+  <div class="numbertext">1 / 5</div>
   <img src="Joker.jpg" style="width:100%">
-  <div class="text">The Joker</div>
+  <div class="text"></div>
 </div>
 
 <div class="mySlides fade">
-  <div class="numbertext">2 / 3</div>
+  <div class="numbertext">2 / 5</div>
   <img src="IT.jpg" style="width:100%">
-  <div class="text">IT Chapter Two</div>
+  <div class="text"></div>
 </div>
 
 <div class="mySlides fade">
-  <div class="numbertext">3 / 3</div>
-  <img src="ScaryStories.jpg" style="width:100%">
-  <div class="text">Scary Stories to tell in the Dark</div>
+  <div class="numbertext">3 / 5</div>
+  <img src="zombieland.jpg" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 5</div>
+  <img src="maleficent.jpg" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5 / 5</div>
+  <img src="addams.jpg" style="width:100%">
+  <div class="text"></div>
 </div>
 
 
@@ -251,6 +263,8 @@ if (!$_SESSION['logged']){
   <span class="dot" onclick="currentSlide(1)"></span> 
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
 </div>
 </div>
 
