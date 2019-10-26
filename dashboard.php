@@ -129,10 +129,11 @@
             
                 echo "<div>Because you liked <b>".ucwords($reccomendationsArray[$movieSelector])."</b>&nbsp;&nbsp;<button value='Refresh Recommendations' onClick='window.location.reload();'>Refresh Recommendations</button></div>";
                     
-                for ($counter = 0; $counter < count($dislikesArray); $counter++){
-                    $index = array_search($dislikesArray[$counter],$resultsArray);
-                    if($index !== FALSE){
-                        unset($resultsArray[$index]);
+                for ($counterBig = 0; $counterBig < count($resultsArray); $counterBig++){
+                    for ($counter = 0; $counter < count($dislikesArray); $counter++){
+                        if (preg_match("#\b$dislikesArray[$counter]\b#i",$resultsArray[$counterBig])){
+                            unset($resultsArray[$counterBig]);
+                        }
                     }
                 }
                     
@@ -156,7 +157,7 @@
                  var x = 0;
                    
                  if (notEnoughMovies){
-                    document.getElementById("C").innerHTML = 'You need at least 3 movies in your liked list to display reccomendations. Search up some movies on the side!';
+                    document.getElementById("C").innerHTML = "You need at least 3 movies in your liked list to display reccomendations. Search up some movies on the side! &nbsp;&nbsp;<button value='Refresh Recommendations' onClick='window.location.reload();'>Refresh Recommendations</button>";
                  }
                  if (noRecommendations){
                     document.getElementById("C").innerHTML = 'There are no reccomendations for this title. Please try adding more movies or refreshing the page!';
