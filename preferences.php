@@ -13,9 +13,32 @@
 <html>
 <head>
 <style>
-table, th, td {
-    border: 1px solid black;
+#list {
+	
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+	
+	
 }
+
+#list td, #list th {
+    border: 1px solid #ddd
+	padding: 8px;
+}
+
+#list tr:nth-child(even){background-color: #f2f2f2;}
+
+#list tr:hover {background-color: #ddd;}
+
+#list th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
 
 .center {
           display: block;
@@ -63,7 +86,7 @@ table, th, td {
 <ul>
  <li><a href="index.html">Home</a></li>
 	  <li><a href="dashboard.php">Dashboard</a></li> 
-	  	  <li><a href="preferences.php">Likes/Dislikes</a></li> 
+	  	  <li><a href="preferences.php">My List</a></li> 
   <li><a href="changepassword.php">Change Password</a></li>
  
  <li><a href="handler_logout.php">Logout</a></li>
@@ -71,7 +94,7 @@ table, th, td {
 
 </ul>
 
-<img src="popcorn.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
+<img src="Dino2.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
 
 <h1> Here are your liked and disliked movies!</h1>
 
@@ -88,11 +111,11 @@ table, th, td {
             //$likes = $client->publish($request);
             $likesArray = explode(",", $likes);
         
-            $out = "<table><tr><td>Likes</td></tr>";
+            $out = "<table id ="list"><tr><td>Likes</td></tr>";
             for($x = 0; $x < count($likesArray); $x++){
                 $out .= "<tr><td>" .$likesArray[$x] ."</td></tr>";
             }
-            $out .= "<table>";
+            $out .= "</table>";
             echo $out;
         ?>
     </div>
@@ -108,11 +131,11 @@ table, th, td {
             //$dislikes = $client->publish($request);
             $dislikesArray = explode(",", $dislikes);
         
-            $out = "<table><tr><td>Dislikes</td></tr>";
+            $out = "<table id = "list"><tr><td>Dislikes</td></tr>";
             for($x = 0; $x < count($dislikesArray); $x++){
                 $out .= "<tr><td>" .$dislikesArray[$x] ."</td></tr>";
             }
-            $out .= "<table>";
+            $out .= "</table>";
             echo $out;
         ?>
     <div>
