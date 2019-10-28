@@ -134,7 +134,8 @@
                         if (stripos($dislikesArray[$counter],$resultsArray[$counterBig]) !== false){
                             //unset($resultsArray[$counterBig]);
                         }else{
-                            unset($resultsArray[$counterBig]);
+                            echo "$resultsArray[$counterBig]";
+                            //unset($resultsArray[$counterBig]);
                         }
                     }
                 }
