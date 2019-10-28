@@ -92,9 +92,9 @@ table, th, td {
             //$likes = $client->publish($request);
             $likesArray = explode(",", $likes);
         
-            $out = "<table><tr><td>Likes</td></tr>";
+            $out = "<table><th><td>Likes</td></th>";
             for($x = 0; $x < count($likesArray); $x++){
-                $out .= "<tr>" .$likesArray[$x] ."</td></tr>";
+                $out .= "<th>" .$likesArray[$x] ."</td></th>";
             }
             $out .= "<table>";
             echo $out;
@@ -112,9 +112,14 @@ table, th, td {
             //$dislikes = $client->publish($request);
             $dislikesArray = explode(",", $dislikes);
 			//table styling
+
             $out = "<table><tr><td>Dislikes</td></tr>";
+=======
+
+            $out = "<table><th><td>Dislikes</td></th>";
+
             for($x = 0; $x < count($dislikesArray); $x++){
-                $out .= "<tr>" .$dislikesArray[$x] ."</td></tr>";
+                $out .= "<th>" .$dislikesArray[$x] ."</td></th>";
             }
             $out .= "<table>"; 
             echo $out;
