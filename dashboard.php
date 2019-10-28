@@ -131,10 +131,10 @@
                     
                 for ($counterBig = 0; $counterBig < count($resultsArray); $counterBig++){
                     for ($counter = 0; $counter < count($dislikesArray); $counter++){
-                        if (preg_match("~\b$dislikesArray[$counter]\b~",$resultsArray[$counterBig])){
+                        if (stripos($dislikesArray[$counter],$resultsArray[$counterBig]) !== false){
                             //unset($resultsArray[$counterBig]);
-                            echo "Dislike Array: $dislikesArray[$counter]";
-                        echo "Results Array: $resultsArray[$counter]";
+                        }else{
+                            unset($resultsArray[$counterBig]);
                         }
                     }
                 }
