@@ -114,7 +114,6 @@ table, th, td {
 			//table styling
 
             $out = "<table><tr><td>Dislikes</td></tr>";
-=======
 
             $out = "<table><th><td>Dislikes</td></th>";
 
