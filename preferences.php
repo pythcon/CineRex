@@ -111,14 +111,14 @@
             //$likes = $client->publish($request);
             $likesArray = explode(",", $likes);
         
-            $out = "<table id ="list"><tr>Likes";
+            $out = "<table id ='list'><td>Likes";
             for($x = 0; $x < count($likesArray); $x++){
-                $out .= "<td>" .$likesArray[$x] ."</td></tr>";
+                $out .= "<tr>" .$likesArray[$x] ."</td></tr>";
             }
             $out .= "<table>";
             echo $out;
         ?>
-    </div>
+    </div><br>
         <?php
 
             $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
@@ -131,9 +131,9 @@
             //$dislikes = $client->publish($request);
             $dislikesArray = explode(",", $dislikes);
 			//table styling
-            $out = "<table id = "list"><tr>Dislikes";
+            $out = "<table id = 'list'><td>Dislikes";
             for($x = 0; $x < count($dislikesArray); $x++){
-                $out .= "<td>" .$dislikesArray[$x] ."</td></tr>";
+                $out .= "<tr>" .$dislikesArray[$x] ."</td></tr>";
             }
             $out .= "<table>"; 
             echo $out;
