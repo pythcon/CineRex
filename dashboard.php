@@ -131,10 +131,13 @@
                     
                 for ($counterBig = 0; $counterBig < count($resultsArray); $counterBig++){
                     for ($counter = 0; $counter < count($dislikesArray); $counter++){
-                        if (stripos($dislikesArray[$counter],$resultsArray[$counterBig]) !== false){
-                            //unset($resultsArray[$counterBig]);
+                        if (preg_match('/\b(' . $dislikesArray[$counter] . ')\b/', $resultsArray[$counterBig])){
+                            if ($dislikesArray[$counter] == ''){
+                                break;
+                            }
+                            echo "found - $dislikesArray[$counter] == $resultsArray[$counterBig]";
+                            unset($resultsArray[$counterBig]);
                         }else{
-                            echo "$resultsArray[$counterBig]";
                             //unset($resultsArray[$counterBig]);
                         }
                     }
