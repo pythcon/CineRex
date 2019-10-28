@@ -115,7 +115,7 @@
             for($x = 0; $x < count($likesArray); $x++){
                 $out .= "<tr><td>" .$likesArray[$x] ."</td></tr>";
             }
-            $out .= "</table>";
+            $out .= "<table>";
             echo $out;
         ?>
     </div>
