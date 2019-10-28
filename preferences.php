@@ -111,9 +111,9 @@
             //$likes = $client->publish($request);
             $likesArray = explode(",", $likes);
         
-            $out = "<table id ="list"><tr><td>Likes</td></tr>";
+            $out = "<table id ="list"><tr>Likes";
             for($x = 0; $x < count($likesArray); $x++){
-                $out .= "<tr><td>" .$likesArray[$x] ."</td></tr>";
+                $out .= "<td>" .$likesArray[$x] ."</td></tr>";
             }
             $out .= "<table>";
             echo $out;
@@ -131,11 +131,11 @@
             //$dislikes = $client->publish($request);
             $dislikesArray = explode(",", $dislikes);
         
-            $out = "<table id = "list"><tr><td>Dislikes</td></tr>";
+            $out = "<table id = "list"><tr>Dislikes";
             for($x = 0; $x < count($dislikesArray); $x++){
-                $out .= "<tr><td>" .$dislikesArray[$x] ."</td></tr>";
+                $out .= "<td>" .$dislikesArray[$x] ."</td></tr>";
             }
-            $out .= "</table>";
+            $out .= "<table>";
             echo $out;
         ?>
     <div>
