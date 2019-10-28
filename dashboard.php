@@ -129,13 +129,15 @@
             
                 echo "<div>Because you liked <b>".ucwords($reccomendationsArray[$movieSelector])."</b>&nbsp;&nbsp;<button value='Refresh Recommendations' onClick='window.location.reload();'>Refresh Recommendations</button></div>";
                     
-                /*for ($counterBig = 0; $counterBig < count($resultsArray); $counterBig++){
+                for ($counterBig = 0; $counterBig < count($resultsArray); $counterBig++){
                     for ($counter = 0; $counter < count($dislikesArray); $counter++){
-                        if (preg_match("#\b$dislikesArray[$counter]\b#i",$resultsArray[$counterBig])){
-                            unset($resultsArray[$counterBig]);
+                        if (preg_match("~\b$dislikesArray[$counter]\b~",$resultsArray[$counterBig])){
+                            //unset($resultsArray[$counterBig]);
+                            echo "Dislike Array: $dislikesArray[$counter]";
+                        echo "Results Array: $resultsArray[$counter]";
                         }
                     }
-                }*/
+                }
                     
                 }else{
                     $notEnoughMovies = true;
