@@ -130,12 +130,12 @@
             $dislikes = $client->send_request($request);
             //$dislikes = $client->publish($request);
             $dislikesArray = explode(",", $dislikes);
-        
+			//table styling
             $out = "<table id = "list"><tr>Dislikes";
             for($x = 0; $x < count($dislikesArray); $x++){
                 $out .= "<td>" .$dislikesArray[$x] ."</td></tr>";
             }
-            $out .= "<table>";
+            $out .= "<table>"; 
             echo $out;
         ?>
     <div>
