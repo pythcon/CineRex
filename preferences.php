@@ -77,7 +77,7 @@ table, th, td {
 
 <img src="Dino2.jpg" style="width:300px; height:300px;" class = "center" align ="auto">
 
-<h1> Here are your liked and disliked movies!</h1>
+<h1>Here are your liked and disliked movies!</h1>
 
     <div>
         <?php
