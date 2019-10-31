@@ -4,13 +4,19 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 require_once('login.php.inc');
+require_once('logging.php');
+
 
 function doLogin($username,$password)
 {
     // lookup username in databas
     // check password
-    $login = new loginDB();
-    return $login->validateLogin($username,$password);
+    $file = __FILE__.PHP_EOL;
+	$PathArray= explode("/", $file);
+	
+	$login = new loginDB();
+    LogMessage("A login was attempted", $PathArray[8]);
+	return $login->validateLogin($username,$password);
     //return false if not valid
 }
 
