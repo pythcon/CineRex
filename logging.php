@@ -20,7 +20,7 @@ function LogMessage($e,$extFile){
 	
 	$message= implode(" - ", $loggingmsg);
 	
-	error_log($message.PHP_EOL,3,"../logs/logfile.log");
+	error_log($message.PHP_EOL,3,"var/log/error.txt");
 }
 
 
