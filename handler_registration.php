@@ -24,7 +24,7 @@
     $request = array();
     $request['type']        = "registration";
     $request['email']       = $_POST['email'];
-    $request['password']    = $password;
+    $request['password']    = md5($password);
     $request['firstName']   = $_POST['firstName'];
     $request['lastName']    = $_POST['lastName'];
     $request['message']     = "registration";
