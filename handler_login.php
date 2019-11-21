@@ -10,7 +10,7 @@
     $request = array();
     $request['type'] = "login";
     $request['email'] = $_POST['email'];
-    $request['password'] = $_POST['password'];
+    $request['password'] = md5($_POST['password']);
     $request['message'] = "login";
     $loginCheck = $client->send_request($request);
     //$registrationCheck = $client->publish($request);
