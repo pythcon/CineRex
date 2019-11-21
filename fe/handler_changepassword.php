@@ -3,9 +3,9 @@
     error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
     ini_set('display_errors' , 1);
     include("usefulfunctions.php");
-    require_once('rabbit/path.inc');
-    require_once('rabbit/get_host_info.inc');
-    require_once('rabbit/rabbitMQLib.inc');
+    require_once('../be/path.inc');
+    require_once('../be/get_host_info.inc');
+    require_once('../be/rabbitMQLib.inc');
 
     //check if logged in
     loginCheck();

@@ -14,9 +14,9 @@
         exit(0);
     }
 
-    require_once('rabbit/path.inc');
-    require_once('rabbit/get_host_info.inc');
-    require_once('rabbit/rabbitMQLib.inc');
+    require_once('../be/path.inc');
+    require_once('../be/get_host_info.inc');
+    require_once('../be/rabbitMQLib.inc');
 
 
     $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
