@@ -57,35 +57,35 @@ public function changePassword($username, $password){
 public function likeMovie($username, $title){
     $un = $this->logindb->real_escape_string($username);
 	$title = $this->logindb->real_escape_string($title);
-    $statement = "UPDATE userld SET liked = CONCAT(liked, '$title', ',') WHERE email='$un'";
+    $statement = "INSERT INTO userld VALUES($un, $title, 'liked')";
 	$response = $this->logindb->query($statement);
 }
 
 public function dislikeMovie($username, $title){
     $un = $this->logindb->real_escape_string($username);
 	$title = $this->logindb->real_escape_string($title);
-    $statement = "UPDATE userld SET disliked = CONCAT(disliked, '$title', ',') WHERE email='$un'";
+    $statement = "INSERT INTO userld VALUES($un, $title, 'disliked')";
 	$response = $this->logindb->query($statement);
 }
 
 public function getLikes($username){
     $un = $this->logindb->real_escape_string($username);
-    $statement = "SELECT liked FROM userld WHERE email='$un'";
+    $statement = "SELECT * FROM userld WHERE email='$un' and type='liked'";
 	$response = $this->logindb->query($statement);
     $result = "";
     while($row = $response->fetch_assoc()) {
-        $result .= $row['liked'];
+        $result .= $row['title']. ",";
     }
     return $result;
 }
 
 public function getDislikes($username){
     $un = $this->logindb->real_escape_string($username);
-    $statement = "SELECT disliked FROM userld WHERE email='$un'";
+    $statement = "SELECT * FROM userld WHERE email='$un' and type='disliked'";
 	$response = $this->logindb->query($statement);
     $result = "";
     while($row = $response->fetch_assoc()) {
-        $result .= $row['disliked'];
+        $result .= $row['title'] . ",";
     }
     return $result;
 }
