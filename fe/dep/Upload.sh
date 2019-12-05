@@ -6,39 +6,33 @@ read bundle
 printf "Please enter the destination you would like to upgrade (QA_DMZ, Prod_FE, etc.):  "
 read destination
 
-function backup {
-    ssh deployment@"$destination" "mkdir /var/www/html/backup; cp /var/www/html/* /var/www/html/backup/;"
-}
-
-function makedir {
-    ssh deployment@"$destination" "mkdir /var/www/html/$bun"
-}
-
 case "$bundle" in
-    fe )
+    fe)
         backup
         bun="fe"
-        makedir
         ;;
-    be )
+    be)
         backup
         bun="be"
-        makedir
         ;;
-    dmz )
+    dmz)
         backup
         bun="dmz"
-        makedir
         ;;
-    all )
+    all)
         backup
         scp /var/www/html/* deployment@"$destination":/var/www/html
         ;;
-    * )
+    *)
         echo "Please enter a valid bundle!"
         exit 1
 esac
 
-scp -r /var/www/html/"$bun"/* deployment@"$destination":/var/www/html/"$bun"/
+scp /var/www/html/"$bun" deployment@"$destination":/var/www/html/"$bun"
+
+
+function backup {
+    ssh deployment@"$destination" "mkdir /var/www/html/backup; cp /var/www/html/* /var/www/html/backup/;"
+}
 
 echo "Upload finished."
