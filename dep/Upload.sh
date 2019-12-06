@@ -7,7 +7,7 @@ printf "Please enter the destination you would like to upgrade (QA_DMZ, Prod_FE,
 read destination
 
 function backup {
-    ssh deployment@"$destination" "mkdir /var/www/html/backup; cp /var/www/html/* /var/www/html/backup/;"
+    ssh deployment@"$destination" "mkdir /var/www/html/backup; cp -pr /var/www/html/$bun /var/www/html/backup/;"
 }
 
 function makedir {
@@ -16,18 +16,18 @@ function makedir {
 
 case "$bundle" in
     fe )
-        backup
         bun="fe"
+        backup
         makedir
         ;;
     be )
-        backup
         bun="be"
+        backup
         makedir
         ;;
     dmz )
-        backup
         bun="dmz"
+        backup
         makedir
         ;;
     all )
