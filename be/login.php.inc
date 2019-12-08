@@ -41,7 +41,10 @@ public function register($username, $password, $firstName, $lastName){
 	$pw = $this->logindb->real_escape_string($password);
 	$fn = $this->logindb->real_escape_string($firstName);
 	$ln = $this->logindb->real_escape_string($lastName);
-    $statement = "INSERT INTO login VALUES ('$un', '$pw', '$fn', '$ln')";
+    $code = $this->random_code(4);
+    $statement = "INSERT INTO login VALUES ('$un', '$pw', '$fn', '$ln','$code')";
+	$response = $this->logindb->query($statement);
+    $statement = "INSERT INTO friends VALUES ('$un', NULL)";
 	$response = $this->logindb->query($statement);
 }
 
@@ -88,5 +91,57 @@ public function getDislikes($username){
     return $result;
 }
 
+public function random_code($length){
+   $string = "";
+   $chars = "abcdefghijklmanopqrstuvwxyz0123456789";
+   $size = strlen($chars);
+   for ($i = 0; $i < $length; $i++) {
+       $string .= $chars[rand(0, $size - 1)];
+   }
+   return $string; 
+}
+
+public function getFriends($username){
+    $un = $this->logindb->real_escape_string($username);
+    $statement = "SELECT * FROM friends WHERE email='$un'";
+	$response = $this->logindb->query($statement);
+    $result = "";
+    while($row = $response->fetch_assoc()) {
+        $result .= $row['friend'] . ",";
+    }
+    return $result;
+}
+
+public function getProfile($code){
+    $code = $this->logindb->real_escape_string($code);
+    $statement = "SELECT email FROM login WHERE code='$code'";
+	$response = $this->logindb->query($statement);
+    return $response;
+}
+
+public function getProfileLikes($code){
+    $code = $this->logindb->real_escape_string($code);
+    $statement = "SELECT email FROM login WHERE code='$code'";
+    $un = $this->logindb->query($statement);
+    $statement = "SELECT * FROM userld WHERE email='$un' and type='liked'";
+	$response = $this->logindb->query($statement);
+    $result = "";
+    while($row = $response->fetch_assoc()) {
+        $result .= $row['title']. ",";
+    }
+    return $result;
+}
+
+public function getProfileDislikes($code){
+    $code = $this->logindb->real_escape_string($code);
+    $statement = "SELECT email FROM login WHERE code='$code'";
+    $un = $this->logindb->query($statement);
+    $statement = "SELECT * FROM userld WHERE email='$un' and type='disliked'";
+	$response = $this->logindb->query($statement);
+    $result = "";
+    while($row = $response->fetch_assoc()) {
+        $result .= $row['title']. ",";
+    }
+    return $result;
 }
 ?>
