@@ -43,8 +43,6 @@ public function register($username, $password, $firstName, $lastName){
 	$ln = $this->logindb->real_escape_string($lastName);
     $statement = "INSERT INTO login VALUES ('$un', '$pw', '$fn', '$ln')";
 	$response = $this->logindb->query($statement);
-    $statement = "INSERT INTO userld (email,liked,disliked) VALUES ('$un','','')";
-	$response = $this->logindb->query($statement);
 }
 
 public function changePassword($username, $password){
@@ -57,14 +55,14 @@ public function changePassword($username, $password){
 public function likeMovie($username, $title){
     $un = $this->logindb->real_escape_string($username);
 	$title = $this->logindb->real_escape_string($title);
-    $statement = "INSERT INTO userld VALUES($un, $title, 'liked')";
+    $statement = "INSERT INTO userld VALUES('$un', '$title', 'liked')";
 	$response = $this->logindb->query($statement);
 }
 
 public function dislikeMovie($username, $title){
     $un = $this->logindb->real_escape_string($username);
 	$title = $this->logindb->real_escape_string($title);
-    $statement = "INSERT INTO userld VALUES($un, $title, 'disliked')";
+    $statement = "INSERT INTO userld VALUES('$un', '$title', 'disliked')";
 	$response = $this->logindb->query($statement);
 }
 
