@@ -112,36 +112,13 @@ public function getFriends($username){
     return $result;
 }
 
-public function getProfile($code){
-    $code = $this->logindb->real_escape_string($code);
-    $statement = "SELECT email FROM login WHERE code='$code'";
+public function getProfile($cd){
+    $code = $this->logindb->real_escape_string($cd);
+    $statement = "SELECT * FROM login WHERE code='$code'";
 	$response = $this->logindb->query($statement);
-    return $response;
+    $row = $response->fetch_assoc();
+    return $row;
 }
 
-public function getProfileLikes($code){
-    $code = $this->logindb->real_escape_string($code);
-    $statement = "SELECT email FROM login WHERE code='$code'";
-    $un = $this->logindb->query($statement);
-    $statement = "SELECT * FROM userld WHERE email='$un' and type='liked'";
-	$response = $this->logindb->query($statement);
-    $result = "";
-    while($row = $response->fetch_assoc()) {
-        $result .= $row['title']. ",";
-    }
-    return $result;
-}
-
-public function getProfileDislikes($code){
-    $code = $this->logindb->real_escape_string($code);
-    $statement = "SELECT email FROM login WHERE code='$code'";
-    $un = $this->logindb->query($statement);
-    $statement = "SELECT * FROM userld WHERE email='$un' and type='disliked'";
-	$response = $this->logindb->query($statement);
-    $result = "";
-    while($row = $response->fetch_assoc()) {
-        $result .= $row['title']. ",";
-    }
-    return $result;
 }
 ?>

@@ -1,7 +1,5 @@
 <?php
     session_start();
-    error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-    ini_set('display_errors' , 1);
     include("usefulfunctions.php");
     require_once('../be/path.inc');
     require_once('../be/get_host_info.inc');

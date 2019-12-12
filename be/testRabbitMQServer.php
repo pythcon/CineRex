@@ -65,6 +65,18 @@ function doGetDislikes($email){
     return $login->getDislikes($email);
 }
 
+//get profile
+function doGetProfile($code){
+    $login = new loginDB();
+    return $login->getProfile($code);
+}
+
+//get friends
+function doGetFriends($email){
+    $login = new loginDB();
+    return $login->getProfile($email);
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -91,6 +103,10 @@ function requestProcessor($request)
         return doGetLikes($request['email']);
     case "getDislikes":
         return doGetDislikes($request['email']);
+    case "getProfile":
+        return doGetProfile($request['code']);
+    case "getFriends":
+        return doGetFriends($request['email']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }

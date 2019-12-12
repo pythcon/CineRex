@@ -8,8 +8,6 @@
     //check to see if user is logged in
     loginCheck();
 
-
-
     <?php
 
         $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
