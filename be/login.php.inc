@@ -117,7 +117,20 @@ public function getProfile($cd){
     $statement = "SELECT * FROM login WHERE code='$code'";
 	$response = $this->logindb->query($statement);
     $row = $response->fetch_assoc();
-    return $row;
+    return $row['email'];
+}
+
+public function addFriend($em, $fe){
+    $email = $this->logindb->real_escape_string($em);
+    $friendEmail = $this->logindb->real_escape_string($fe);
+    $statement = "INSERT INTO friends VALUES ('$email', '$friendEmail')";
+	$response = $this->logindb->query($statement);
+    
+    if ($response){
+        return 1;//went successfully
+    }else{
+        return 0;//unsuccessful
+    }
 }
 
 }

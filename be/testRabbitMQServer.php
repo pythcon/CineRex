@@ -74,7 +74,13 @@ function doGetProfile($code){
 //get friends
 function doGetFriends($email){
     $login = new loginDB();
-    return $login->getProfile($email);
+    return $login->getFriends($email);
+}
+
+//add friend
+function doAddFriend($email, $friendEmail){
+    $login = new loginDB();
+    return $login->addFriend($email, $friendEmail);
 }
 
 function requestProcessor($request)
@@ -107,6 +113,8 @@ function requestProcessor($request)
         return doGetProfile($request['code']);
     case "getFriends":
         return doGetFriends($request['email']);
+    case "addFriend":
+        return doAddFriend($request['email'], $request['friendEmail']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
