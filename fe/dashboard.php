@@ -65,6 +65,7 @@
  <li><a href="index.html">Home</a></li>
 	  <li><a href="dashboard.php">Dashboard</a></li> 
 	  <li><a href="preferences.php">My List</a></li> 
+	  <li><a href="friends.php">Friends List</a></li> 
   <li><a href="changepassword.php">Change Password</a></li>
  
  <li><a href="handler_logout.php">Logout</a></li>
