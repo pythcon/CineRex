@@ -6,7 +6,7 @@ private $logindb;
 
 public function __construct()
 {
-	$this->logindb = new mysqli("127.0.0.1","testUser","12345","testdb");
+	$this->logindb = new mysqli("192.168.0.144","testUser","12345","testdb");
 
 	if ($this->logindb->connect_errno != 0)
 	{
@@ -132,6 +132,19 @@ public function addFriend($em, $fe){
         return 0;//unsuccessful
     }
 }
+
+public function getUsersWithMovie($t){
+    $title = $this->logindb->real_escape_string($t);
+    $statement = "SELECT * FROM userld WHERE title='$title' AND type='liked'";
+	$response = $this->logindb->query($statement);
+    $returnUsers = array();
+    
+    while ($row = $response->fetch_assoc()){
+        array_push($returnUsers, $row['email']);
+    }
+    return $returnUsers;
+}
+
 
 }
 ?>

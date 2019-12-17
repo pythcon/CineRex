@@ -83,6 +83,18 @@ function doAddFriend($email, $friendEmail){
     return $login->addFriend($email, $friendEmail);
 }
 
+//add notify to user
+function doAddNotification($email, $imdbid){
+    $login = new loginDB();
+    return $login->addNotification($email, $imdbid);
+}
+
+//notify to user
+function doGetUsersWithMovie($movie){
+    $login = new loginDB();
+    return $login->getUsersWithMovie($movie);
+}
+
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -115,6 +127,8 @@ function requestProcessor($request)
         return doGetFriends($request['email']);
     case "addFriend":
         return doAddFriend($request['email'], $request['friendEmail']);
+    case "getUsersWithMovie":
+        return doGetUsersWithMovie($request['movie']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }

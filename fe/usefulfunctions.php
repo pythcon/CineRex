@@ -27,4 +27,22 @@
         
         exit();
     }
+
+    function notifyUsers($users, $title, $message){
+        $subj = "CineRex: Movie Updates";
+        $body = "Hello,\n $title $message";
+        $headers = 'From: webmaster@cinerex.com' . "\r\n" .
+            'Reply-To: webmaster@cinerex.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        
+        foreach($users as $u){
+            echo"
+            <script>
+                alert(\"$u\");
+                window.location.replace('notifications.php');
+            </script>";
+            mail($u, $subj, $body, $headers);
+        }
+        
+    }
 ?>

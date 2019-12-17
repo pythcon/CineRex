@@ -1,5 +1,4 @@
 <?php
-sleep (2.5);
 $movieTitle=$_GET["movieTitle"];
 $url = "http://www.omdbapi.com/?i=tt3896198&apikey=92e1a0bb&t="; //$movieTitle
 $url = $url.urlencode($movieTitle);
