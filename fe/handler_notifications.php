@@ -20,8 +20,8 @@
     notifyUsers($users, $movieTitle, $message);
 
     echo"
-    <script>
-        alert(\"Users Notified.\");
-        window.location.replace('notifications.php');
-    </script>";
+        <script>
+            alert(\"Users Notified.\");
+            window.location.replace('notifications.php');
+        </script>";
 ?>
