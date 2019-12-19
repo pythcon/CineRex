@@ -1,4 +1,4 @@
-RunTime Server Terror
+Runtime Terror
 Michael DeMeo | Todd Murphy | Het Patel | Panchajanya Vangapandu | Vishalkumar Patel (later addition)
 
 IT490 - CineRex
