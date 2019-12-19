@@ -1,11 +1,11 @@
 <?php
-/*
-    include("usefulfunctions.php");
-    require_once('../be/path.inc');
-    require_once('../be/get_host_info.inc');
-    require_once('../be/rabbitMQLib.inc');
 
-    $client = new rabbitMQClient("../be/testRabbitMQ.ini","APICALL");
+    include("usefulfunctions.php");
+    require_once('../dmz/path.inc');
+    require_once('../dmz/get_host_info.inc');
+    require_once('../dmz/rabbitMQLib.inc');
+
+    $client = new rabbitMQClient("../dmz/testRabbitMQ.ini","APICALL");
 
     $request = array();
     $request['type'] = "API";
@@ -15,12 +15,12 @@
     //$registrationCheck = $client->publish($request);
 
     //echo "<div>".$loginCheck."</div>";
-    echo $contents;*/
+    echo $contents;
 
 
 
 //without RabbitMQ
-
+/*
 $movieTitle=$_GET["movieTitle"];
 $url = "http://www.omdbapi.com/?i=tt3896198&apikey=92e1a0bb&t="; //$movieTitle
 $url = $url.urlencode($movieTitle);
@@ -28,6 +28,6 @@ $url = $url.urlencode($movieTitle);
 $fp = fopen ( $url , "r" ); 
 $contents = "";
 while ( $more = fread ( $fp, 1000  ) ) {      $contents .=  $more ;   }
-echo $contents ;  
+echo $contents ;  */
 
 ?>
